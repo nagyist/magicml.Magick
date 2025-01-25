@@ -1,0 +1,39 @@
+steps:
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - '-c'
+      - >
+        gcloud secrets versions access latest --secret=GITHUB_ACCESS_TOKEN >
+        token.txt
+    entrypoint: bash
+    secretEnv:
+      - GITHUB_ACCESS_TOKEN
+  - name: gcr.io/cloud-builders/git
+    args:
+      - '-c'
+      - >
+        git clone https://$$(cat token.txt)@github.com/oneirocom/magick.git
+
+        cd magick
+
+        git submodule init
+
+        git -c submodule."portal/cloud".url=https://$$(cat
+        ../token.txt)@github.com/oneirocom/portal.git submodule update
+        --recursive portal/cloud
+    entrypoint: bash
+  - name: gcr.io/cloud-builders/npm
+    args:
+      - install
+    dir: magick
+  - name: gcr.io/cloud-builders/npm
+    args:
+      - nx
+      - run
+      - 'portal:container'
+    dir: magick
+    entrypoint: npx
+availableSecrets:
+  secretManager:
+    - versionName: projects/$PROJECT_ID/secrets/GITHUB_ACCESS_TOKEN/versions/latest
+      env: GITHUB_ACCESS_TOKEN

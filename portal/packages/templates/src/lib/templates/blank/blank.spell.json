@@ -1,0 +1,14 @@
+{
+  "id": "f9868030-c17a-4f44-b982-73b36744177b",
+  "name": "blank",
+  "projectId": "clsw8ox0x0001z1rukq81z6od",
+  "createdAt": "2024-02-21T23:37:37.412Z",
+  "updatedAt": null,
+  "type": "behave",
+  "spellReleaseId": null,
+  "graph": {
+    "nodes": [],
+    "variables": [],
+    "customEvents": []
+  }
+}

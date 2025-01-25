@@ -1,0 +1,31 @@
+{
+  "name": "portal-utils-server",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/packages/utils/server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/packages/utils/server",
+        "tsConfig": "portal/cloud/packages/utils/server/tsconfig.lib.json",
+        "packageJson": "portal/cloud/packages/utils/server/package.json",
+        "main": "portal/cloud/packages/utils/server/src/index.ts",
+        "assets": ["portal/cloud/packages/utils/server/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "portal/cloud/packages/utils/server/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

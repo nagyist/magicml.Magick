@@ -1,0 +1,6 @@
+# this is needed for use in additive IAM bindings, to avoid conflicts
+name: organizationIamAdmin
+includedPermissions:
+  - resourcemanager.organizations.get
+  - resourcemanager.organizations.getIamPolicy
+  - resourcemanager.organizations.setIamPolicy

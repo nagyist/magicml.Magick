@@ -1,0 +1,24 @@
+{
+  "name": "portal-server-router",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/next/server/router/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/next/server/router",
+        "tsConfig": "portal/cloud/next/server/router/tsconfig.lib.json",
+        "packageJson": "portal/cloud/next/server/router/package.json",
+        "main": "portal/cloud/next/server/router/src/index.ts",
+        "assets": ["portal/cloud/next/server/router/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": []
+}

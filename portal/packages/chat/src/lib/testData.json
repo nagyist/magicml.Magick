@@ -1,0 +1,177 @@
+ {
+	"items": [
+		{
+			"id": "7cbf19a6-1993-4e20-81ff-71e2e5ba8df3",
+			"title": "React Component: Date Grouping",
+			"create_time": "2023-11-21T07:32:02.119426+00:00",
+			"update_time": "2023-11-21T07:35:47.351625+00:00"
+		},
+		{
+			"id": "d4bf660c-45ba-4eee-9ecf-42b3c25a71bb",
+			"title": "Console Numbers: 9, 14",
+			"create_time": "2023-11-20T09:22:16.201452+00:00",
+			"update_time": "2023-11-20T09:28:09.581829+00:00"
+		},
+		{
+			"id": "d17e9ec0-0698-4891-9eee-b2923da98706",
+			"title": "Extract Object from Array",
+			"create_time": "2023-11-16T11:00:47.203878+00:00",
+			"update_time": "2023-11-16T11:01:00.712583+00:00"
+		},
+		{
+			"id": "025f5f35-717e-411a-a1df-3c6ca41ad9d0",
+			"title": "Hello, How can I assist?",
+			"create_time": "2023-11-16T08:53:24.991115+00:00",
+			"update_time": "2023-11-16T08:54:03.286711+00:00"
+		},
+		{
+			"id": "b97c074b-25ce-4827-8706-30cf4cb56baf",
+			"title": "Busy Work, Hobbies, Socializing",
+			"create_time": "2023-11-13T12:27:28.952243+00:00",
+			"update_time": "2023-11-13T12:28:02.886064+00:00"
+		},
+		{
+			"id": "f5b3e7fb-f72a-4c9d-85d2-e51e23b17cfb",
+			"title": "Agent Switch Settings",
+			"create_time": "2023-11-08T11:05:47.138984+00:00",
+			"update_time": "2023-11-08T14:54:10.813697+00:00"
+		},
+		{
+			"id": "84eb40d1-1582-4db2-8fe6-c44b14c32068",
+			"title": "Smart Crop Recommender UML",
+			"create_time": "2023-11-07T22:16:42.586889+00:00",
+			"update_time": "2023-11-08T07:16:51.067126+00:00"
+		},
+		{
+			"id": "7f562e6b-88dd-4070-acd2-46a64dee3470",
+			"title": "Configurando Interruptores de Agente",
+			"create_time": "2023-11-07T17:35:44.794675+00:00",
+			"update_time": "2023-11-07T17:41:06.366840+00:00"
+		},
+		{
+			"id": "efcea610-7ec8-482a-9817-121bee633143",
+			"title": "GPT4 Turbo: Incredible Value!",
+			"create_time": "2023-11-06T19:01:32.359442+00:00",
+			"update_time": "2023-11-06T19:01:47.261839+00:00"
+		},
+		{
+			"id": "c11f455e-3228-4013-b4be-a68b2975b39e",
+			"title": "Diagramas de interacción y máquinas de estado",
+			"create_time": "2023-11-06T07:45:40.865860+00:00",
+			"update_time": "2023-11-06T09:59:24.709345+00:00"
+		},
+		{
+			"id": "05e91b8d-b228-47c6-ab64-b503f896afde",
+			"title": "Tech Impact on Society",
+			"create_time": "2023-10-30T08:07:27.971832+00:00",
+			"update_time": "2023-11-01T17:33:20.914379+00:00"
+		},
+		{
+			"id": "8babb196-fafe-4eef-9927-cf3007218d05",
+			"title": "Update Keras Version",
+			"create_time": "2023-10-30T17:53:03.202588+00:00",
+			"update_time": "2023-10-30T17:54:23.569389+00:00"
+		},
+		{
+			"id": "88dfbbde-1619-4da9-b7f3-51fac0ec79f7",
+			"title": "Code Explanation Assistance",
+			"create_time": "2023-10-27T15:45:31.683145+00:00",
+			"update_time": "2023-10-27T15:46:10.041084+00:00"
+		},
+		{
+			"id": "90187a76-f587-429f-997b-579bfb864ba1",
+			"title": "Configuración de rutas de navegación",
+			"create_time": "2023-10-27T09:59:07.117302+00:00",
+			"update_time": "2023-10-27T10:11:40.751049+00:00"
+		},
+		{
+			"id": "92422893-b9a2-4fa3-a231-768e83155f51",
+			"title": "Crop Recommendation Systems Overview",
+			"create_time": "2023-10-24T20:02:59.257577+00:00",
+			"update_time": "2023-10-26T20:48:06.658658+00:00"
+		},
+		{
+			"id": "190548b6-b214-41dc-8ff6-26c97073ebb1",
+			"title": "New chat",
+			"create_time": "2023-10-26T16:34:59.988419+00:00",
+			"update_time": "2023-10-26T16:35:48.544392+00:00"
+		},
+		{
+			"id": "4974293a-ecfb-4669-a332-e093b753b22f",
+			"title": "Configuración de autenticación Next.js",
+			"create_time": "2023-10-26T10:05:59.562637+00:00",
+			"update_time": "2023-10-26T10:28:25.740843+00:00"
+		},
+		{
+			"id": "2ba58914-e442-42ef-afc2-ae766c165c26",
+			"title": "Dynamic ProvidersList Update",
+			"create_time": "2023-10-26T09:17:46.963874+00:00",
+			"update_time": "2023-10-26T09:21:01.488532+00:00"
+		},
+		{
+			"id": "71b3bc5d-691d-4bbf-96fb-0abe382bd0bc",
+			"title": "Crear lista de proveedores.",
+			"create_time": "2023-10-26T07:05:06.584545+00:00",
+			"update_time": "2023-10-26T07:05:14.181872+00:00"
+		},
+		{
+			"id": "c227df90-8dcb-48f5-aceb-b8cfa4e1e782",
+			"title": "Export AuthOptions from getOptions",
+			"create_time": "2023-10-25T17:38:45.732036+00:00",
+			"update_time": "2023-10-25T17:38:56.562434+00:00"
+		},
+		{
+			"id": "9c25cb70-ea10-4580-8645-b8498128451b",
+			"title": "Replace process.env.NEXT_PUBLIC_USE_OAUTH",
+			"create_time": "2023-10-25T09:36:36.202207+00:00",
+			"update_time": "2023-10-25T09:39:43.331323+00:00"
+		},
+		{
+			"id": "6a7084c8-54f1-4e96-8e3e-5ba05c6a8334",
+			"title": "Gerenciamento de Layout React",
+			"create_time": "2023-10-18T15:25:41.769484+00:00",
+			"update_time": "2023-10-25T09:35:26.476261+00:00"
+		},
+		{
+			"id": "d5e07875-1a1c-4921-92d4-bf06cc572eb7",
+			"title": "Remove Python Packages for GitHub",
+			"create_time": "2023-10-24T16:11:02.307566+00:00",
+			"update_time": "2023-10-24T16:11:15.956705+00:00"
+		},
+		{
+			"id": "2c4075c4-2acf-423e-aa53-29c0c02b9123",
+			"title": "Crear un entorno Python",
+			"create_time": "2023-10-24T14:56:40.397096+00:00",
+			"update_time": "2023-10-24T14:56:53.825468+00:00"
+		},
+		{
+			"id": "70d2cfc1-5ee9-41a6-917a-fd506bceeeda",
+			"title": "Kirundi Translator Job Posting",
+			"create_time": "2023-10-24T07:27:36.846084+00:00",
+			"update_time": "2023-10-24T07:29:23.720670+00:00"
+		},
+		{
+			"id": "aa98d374-b9ce-493d-8013-93a54b30f39c",
+			"title": "Generalized Crop Suitability Prediction",
+			"create_time": "2023-10-23T21:05:56.652461+00:00",
+			"update_time": "2023-10-23T21:07:19.585674+00:00"
+		},
+		{
+			"id": "89d5f855-1f88-4889-8814-1f9a77e56918",
+			"title": "Warning about feature names.",
+			"create_time": "2023-10-23T21:01:50.299571+00:00",
+			"update_time": "2023-10-23T21:04:21.600427+00:00"
+		},
+		{
+			"id": "c6e8d54c-781a-4b55-8eaa-b39d94da5e77",
+			"title": "Configuración de autenticación NextAuth",
+			"create_time": "2023-10-23T07:51:14.722045+00:00",
+			"update_time": "2023-10-23T07:55:31.134944+00:00"
+		}
+	],
+	"total": 378,
+	"limit": 28,
+	"offset": 0,
+	"has_missing_conversations": false
+}
+

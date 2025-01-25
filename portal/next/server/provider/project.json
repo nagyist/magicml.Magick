@@ -1,0 +1,33 @@
+{
+  "name": "portal-server-provider",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/next/server/provider/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/next/server/provider",
+        "tsConfig": "portal/cloud/next/server/provider/tsconfig.lib.json",
+        "project": "portal/cloud/next/server/provider/package.json",
+        "entryFile": "portal/cloud/next/server/provider/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "swc",
+        "assets": [
+          {
+            "glob": "portal/cloud/next/server/provider/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,2023 @@
+{
+  "id": "47917062-517f-4d8e-8a2c-46fed9bb4b44",
+  "name": "babyAGI-root",
+  "projectId": "clrqy9mej00040alamk7uro2l",
+  "createdAt": "2024-02-06T23:29:38.198Z",
+  "updatedAt": "1707289609026",
+  "type": "behave",
+  "spellReleaseId": null,
+  "graph": {
+    "nodes": [
+      {
+        "id": "033e6390-dcc0-45fa-b5c3-2475107404f1",
+        "type": "variables/get",
+        "flows": {
+          "tasks": {
+            "nodeId": "9109643f-103a-48f5-8179-967acc134b88",
+            "socket": "tasks"
+          }
+        },
+        "metadata": {
+          "positionX": "3444.3988606248267",
+          "positionY": "462.18835900726265"
+        },
+        "configuration": {
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "c6af5b82-338f-4b05-a683-04bc4238d0c5",
+        "type": "magick/generateText",
+        "flows": {
+          "done": {
+            "nodeId": "f163a94f-9fac-41a8-8a87-93206423e877",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "4038.842628855894",
+          "positionY": "134.88009471388972"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "9109643f-103a-48f5-8179-967acc134b88",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo-16k",
+          "models": [],
+          "modelChoices": [
+            "gpt-3.5-turbo",
+            "gpt-3.5-turbo-1106",
+            "gpt-3.5-turbo-0301",
+            "gpt-3.5-turbo-0613",
+            "gpt-3.5-turbo-16k",
+            "gpt-3.5-turbo-16k-0613",
+            "gpt-3",
+            "davinci",
+            "curie",
+            "babbage",
+            "ada",
+            "gpt-4",
+            "gpt-4-1106-preview",
+            "gpt-4-0314",
+            "gpt-4-0613",
+            "gpt-4-32k",
+            "gpt-4-32k-0314",
+            "gpt-4-32k-0613",
+            "gemini-pro",
+            "palm",
+            "mistral",
+            "anthropic",
+            "sagemaker",
+            "bedrock",
+            "anyscale",
+            "perplexity-ai",
+            "vllm",
+            "deepinfra",
+            "j2-light",
+            "j2-mid",
+            "j2-ultra",
+            "nlpc-cloud",
+            "replicate",
+            "cohere",
+            "together-ai",
+            "aleph-alpha",
+            "baseten",
+            "openrouter",
+            "custom-api",
+            "petals"
+          ],
+          "customBaseUrl": "",
+          "modelProvider": "openai",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "modelChoices",
+            "customBaseUrl"
+          ]
+        }
+      },
+      {
+        "id": "330f8d4e-5941-4a9e-b257-34987075d671",
+        "type": "magick/generateText",
+        "flows": {
+          "done": {
+            "nodeId": "e07f2587-b20e-4748-8d59-5dc64648376a",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "2653.703003142047",
+          "positionY": "95.27366703927808"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "42975465-d822-4e51-9562-41bf55a10ac3",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo-16k-0613",
+          "models": [],
+          "modelChoices": [
+            "gpt-3.5-turbo",
+            "gpt-3.5-turbo-1106",
+            "gpt-3.5-turbo-0301",
+            "gpt-3.5-turbo-0613",
+            "gpt-3.5-turbo-16k",
+            "gpt-3.5-turbo-16k-0613",
+            "gpt-3",
+            "davinci",
+            "curie",
+            "babbage",
+            "ada",
+            "gpt-4",
+            "gpt-4-1106-preview",
+            "gpt-4-0314",
+            "gpt-4-0613",
+            "gpt-4-32k",
+            "gpt-4-32k-0314",
+            "gpt-4-32k-0613",
+            "gemini-pro",
+            "palm",
+            "mistral",
+            "anthropic",
+            "sagemaker",
+            "bedrock",
+            "anyscale",
+            "perplexity-ai",
+            "vllm",
+            "deepinfra",
+            "j2-light",
+            "j2-mid",
+            "j2-ultra",
+            "nlpc-cloud",
+            "replicate",
+            "cohere",
+            "together-ai",
+            "aleph-alpha",
+            "baseten",
+            "openrouter",
+            "custom-api",
+            "petals"
+          ],
+          "customBaseUrl": "",
+          "modelProvider": "openai",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "customBaseUrl",
+            "modelChoices"
+          ]
+        }
+      },
+      {
+        "id": "4867e0c9-2318-4461-8d2a-0c851af67cae",
+        "type": "magick/generateText",
+        "flows": {
+          "done": {
+            "nodeId": "6e723184-9f7d-498b-93a0-07647e62c44c",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "1544.2104239418982",
+          "positionY": "232.95578475762863"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "842fa3be-9748-4dff-8adb-e47588e81064",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo-16k-0613",
+          "models": [],
+          "modelChoices": [
+            "gpt-3.5-turbo",
+            "gpt-3.5-turbo-1106",
+            "gpt-3.5-turbo-0301",
+            "gpt-3.5-turbo-0613",
+            "gpt-3.5-turbo-16k",
+            "gpt-3.5-turbo-16k-0613",
+            "gpt-3",
+            "davinci",
+            "curie",
+            "babbage",
+            "ada",
+            "gpt-4",
+            "gpt-4-1106-preview",
+            "gpt-4-0314",
+            "gpt-4-0613",
+            "gpt-4-32k",
+            "gpt-4-32k-0314",
+            "gpt-4-32k-0613",
+            "gemini-pro",
+            "palm",
+            "mistral",
+            "anthropic",
+            "sagemaker",
+            "bedrock",
+            "anyscale",
+            "perplexity-ai",
+            "vllm",
+            "deepinfra",
+            "j2-light",
+            "j2-mid",
+            "j2-ultra",
+            "nlpc-cloud",
+            "replicate",
+            "cohere",
+            "together-ai",
+            "aleph-alpha",
+            "baseten",
+            "openrouter",
+            "custom-api",
+            "petals"
+          ],
+          "customBaseUrl": "",
+          "modelProvider": "together",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "customBaseUrl",
+            "modelChoices"
+          ]
+        }
+      },
+      {
+        "id": "6e723184-9f7d-498b-93a0-07647e62c44c",
+        "type": "magick/sendMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "1ebe8db4-7b0c-4e77-9a63-e11cffe417d7",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "1821.7725767763052",
+          "positionY": "201.40695997722122"
+        },
+        "parameters": {
+          "content": {
+            "link": {
+              "nodeId": "4e52e65d-9e20-498b-878a-8f56ba59d23e",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "4e52e65d-9e20-498b-878a-8f56ba59d23e",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "1820.2427188607815",
+          "positionY": "96.60868953444825"
+        },
+        "parameters": {
+          "result": {
+            "link": {
+              "nodeId": "4867e0c9-2318-4461-8d2a-0c851af67cae",
+              "socket": "response"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "TASK RESULT\n{{result}}",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "7cf13e24-528f-48e6-a99b-9e1c3dd05494",
+        "type": "magick/sendMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "330f8d4e-5941-4a9e-b257-34987075d671",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "2397.035051133479",
+          "positionY": "104.3181145357359"
+        },
+        "parameters": {
+          "content": {
+            "value": "GENERATING NEW TASKS"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "f163a94f-9fac-41a8-8a87-93206423e877",
+        "type": "magick/sendMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "d14dda63-4321-4bbd-a7f6-2ec93a51a2f7",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "4330.888093073387",
+          "positionY": "118.60830414589256"
+        },
+        "parameters": {
+          "content": {
+            "value": "PRIORITIZING TASKS"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "9014b5fc-9e9a-4fe7-9920-fd0817c2336e",
+        "type": "magick/sendMessage",
+        "metadata": {
+          "positionX": "3432.457563957296",
+          "positionY": "359.1961600113433"
+        },
+        "parameters": {
+          "content": {
+            "link": {
+              "nodeId": "d4597e92-b955-45e2-b57d-ea758104c377",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "d4597e92-b955-45e2-b57d-ea758104c377",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "3195.94415478628",
+          "positionY": "430.24629479056057"
+        },
+        "parameters": {
+          "task": {
+            "link": {
+              "nodeId": "5b3d40bc-e7e9-46bf-b343-6b8b7f138af1",
+              "socket": "Array Item"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "task",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "Adding new tasks to task list:\n{{task}}",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "5b3d40bc-e7e9-46bf-b343-6b8b7f138af1",
+        "type": "flow/array/forEach",
+        "flows": {
+          "loopBody": {
+            "nodeId": "54739615-c57d-49db-83c1-e6647d683ae1",
+            "socket": "flow"
+          },
+          "completed": {
+            "nodeId": "c6af5b82-338f-4b05-a683-04bc4238d0c5",
+            "socket": "flow"
+          },
+          "Array Item": {
+            "nodeId": "54739615-c57d-49db-83c1-e6647d683ae1",
+            "socket": "Item"
+          }
+        },
+        "metadata": {
+          "positionX": "3186.875256919855",
+          "positionY": "142.92787391564906"
+        },
+        "parameters": {
+          "array": {
+            "link": {
+              "nodeId": "4228f6e5-ca26-4a60-9be9-8e3955ba611c",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "valueType": "string",
+          "socketOutputs": [
+            {
+              "key": "Array Item",
+              "name": "Array Item",
+              "valueType": "string"
+            }
+          ],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "valueTypes",
+            "socketInputs",
+            "valueTypeOptions"
+          ],
+          "valueTypeOptions": {
+            "values": [
+              "string",
+              "number",
+              "float",
+              "boolean",
+              "object",
+              "array"
+            ],
+            "socketName": "Array Item"
+          }
+        }
+      },
+      {
+        "id": "54739615-c57d-49db-83c1-e6647d683ae1",
+        "type": "logic/array/push",
+        "flows": {
+          "flow": {
+            "nodeId": "9014b5fc-9e9a-4fe7-9920-fd0817c2336e",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "3430.3257555604537",
+          "positionY": "204.0908658716168"
+        },
+        "parameters": {
+          "Item": {
+            "link": {
+              "nodeId": "5b3d40bc-e7e9-46bf-b343-6b8b7f138af1",
+              "socket": "Array Item"
+            }
+          },
+          "array": {
+            "link": {
+              "nodeId": "d99e6af2-715a-4d5f-966c-2c24a5f28ded",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {
+          "valueType": "string",
+          "socketInputs": [
+            {
+              "key": "Item",
+              "name": "Item",
+              "valueType": "string"
+            }
+          ],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "valueTypes",
+            "socketInputs",
+            "valueTypeOptions"
+          ],
+          "valueTypeOptions": {
+            "values": [
+              "string",
+              "number",
+              "float",
+              "boolean",
+              "object",
+              "array"
+            ],
+            "socketName": "Item"
+          }
+        }
+      },
+      {
+        "id": "88096ae8-8799-4754-b682-b528487acbbc",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "1308.235943118025",
+          "positionY": "102.28559123005564"
+        },
+        "parameters": {
+          "task": {
+            "link": {
+              "nodeId": "f3e21e88-a65e-4880-8dd3-ab5959b222b6",
+              "socket": "task"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "task",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "STARTING TASK:\n{{task}}",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "911a4652-47ff-4bbf-8c52-a16758f8c4f6",
+        "type": "magick/sendMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "4867e0c9-2318-4461-8d2a-0c851af67cae",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "1306.34055843057",
+          "positionY": "200.25977832862736"
+        },
+        "parameters": {
+          "content": {
+            "link": {
+              "nodeId": "88096ae8-8799-4754-b682-b528487acbbc",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "1ebe8db4-7b0c-4e77-9a63-e11cffe417d7",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "7cf13e24-528f-48e6-a99b-9e1c3dd05494",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "2062.631964394604",
+          "positionY": "162.35910405101163"
+        },
+        "parameters": {
+          "result": {
+            "link": {
+              "nodeId": "4867e0c9-2318-4461-8d2a-0c851af67cae",
+              "socket": "response"
+            }
+          }
+        },
+        "configuration": {
+          "label": "result",
+          "variableId": "cc8e1297-bc62-4e2e-94a6-df439f65d8db",
+          "socketInputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "74ebaea9-7fe4-4791-8d95-a5c25d96643c",
+        "type": "variables/get",
+        "flows": {
+          "done": {
+            "nodeId": "9c2c28ac-340d-43d8-abf9-d6ee4a12b377",
+            "socket": "condition"
+          }
+        },
+        "metadata": {
+          "positionX": "-48.784341395576575",
+          "positionY": "434.6517529834875"
+        },
+        "configuration": {
+          "label": "done",
+          "variableId": "3bce7cd0-3405-4ed6-a8f7-9cc592dd1a29",
+          "socketOutputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "ff9ade2a-1195-4c9b-a0fb-0d957cdbe622",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "d10dc68b-1ec9-4aaf-a1e2-c6b5e4edf95b",
+            "socket": "flow"
+          },
+          "tasks": {
+            "nodeId": "aad7ce23-0678-4c41-b393-334d9e19ee06",
+            "socket": "a"
+          }
+        },
+        "metadata": {
+          "positionX": "-41.0638338809099",
+          "positionY": "140.9184534126798"
+        },
+        "parameters": {
+          "tasks": {
+            "link": {
+              "nodeId": "2d024de9-ddce-4653-be68-e60517c37ff7",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketInputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "7f7b7ae9-0d92-49dc-bac0-08f8279073e6",
+        "type": "variables/get",
+        "flows": {
+          "tasks": {
+            "nodeId": "8619ae7b-c53c-491e-b27f-31cef4257223",
+            "socket": "array"
+          }
+        },
+        "metadata": {
+          "positionX": "-900.5050409688412",
+          "positionY": "-257.30974103704943"
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "8619ae7b-c53c-491e-b27f-31cef4257223",
+        "type": "action/array/clear",
+        "flows": {
+          "flow": {
+            "nodeId": "170b3e66-3afc-4e4c-b990-f5411cadb026",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-636.5607857444847",
+          "positionY": "-315.25647335971564"
+        },
+        "parameters": {
+          "array": {
+            "link": {
+              "nodeId": "7f7b7ae9-0d92-49dc-bac0-08f8279073e6",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "a405c6e3-4823-467a-ad04-48d6496218c1",
+        "type": "magick/onMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "8619ae7b-c53c-491e-b27f-31cef4257223",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-899.5037639062896",
+          "positionY": "-179.967890848549"
+        },
+        "configuration": {
+          "eventState": [],
+          "hiddenProperties": ["hiddenProperties", "eventState"],
+          "eventStateProperties": [
+            "connector",
+            "client",
+            "channel",
+            "agentId",
+            "sender"
+          ]
+        }
+      },
+      {
+        "id": "170b3e66-3afc-4e4c-b990-f5411cadb026",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "ab047cd6-6863-4ae6-aeb9-dacaa9bc564b",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-631.8177044414533",
+          "positionY": "-187.72004945807907"
+        },
+        "configuration": {
+          "label": "result",
+          "variableId": "cc8e1297-bc62-4e2e-94a6-df439f65d8db",
+          "socketInputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "42975465-d822-4e51-9562-41bf55a10ac3",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "2392.555679692445",
+          "positionY": "345.05321852785937"
+        },
+        "parameters": {
+          "task": {
+            "link": {
+              "nodeId": "cbfe778b-02d4-474d-97f7-7c4fcd523c78",
+              "socket": "task"
+            }
+          },
+          "tasks": {
+            "link": {
+              "nodeId": "c7ce70ae-52db-4660-9053-4e07b6cf0510",
+              "socket": "tasks"
+            }
+          },
+          "result": {
+            "link": {
+              "nodeId": "5890c0e8-5e48-4d98-9ea8-d92b3d69d42f",
+              "socket": "result"
+            }
+          },
+          "hasTasks": {
+            "link": {
+              "nodeId": "b872040f-9834-49ac-9452-301e4fa3c4ce",
+              "socket": "result"
+            }
+          },
+          "objective": {
+            "link": {
+              "nodeId": "1f98fae0-82b6-4332-ba5b-096f1b32bb91",
+              "socket": "objective"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            },
+            {
+              "name": "result",
+              "valueType": "string"
+            },
+            {
+              "name": "task",
+              "valueType": "string"
+            },
+            {
+              "name": "hasTasks",
+              "valueType": "boolean"
+            },
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "You are to use the result from an execution agent to create new tasks with the following objective: {{objective}}.\nThe last completed task has the result:\n{{result}}\nThis result was based on this task description:\n{{task}}\n{{#if hasTasks}}\nThese are the incomplete tasks: \n{{#each tasks}}\n{{this}}\n{{/each}}\n{{/if}}\nBased on the result, return a list of tasks to be completed in order to meet the objective. \n{{#if hasTasks}} These new tasks must not overlap with incomplete tasks. {{/if}}\nReturn one task per line in your response. The result must be a numbered list in the format:\n\n#. First task\n#. Second task\n\nThe number of each entry must be followed by a period. If your list is empty, write \"There are no tasks to add at this time.\"\n\nUnless your list is empty, do not include any headers before your numbered list or follow your numbered list with any other output.\n",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "b872040f-9834-49ac-9452-301e4fa3c4ce",
+        "type": "math/greaterThan/integer",
+        "metadata": {
+          "positionX": "2051.7315137015325",
+          "positionY": "470.8387292702333"
+        },
+        "parameters": {
+          "a": {
+            "link": {
+              "nodeId": "c9c0cd92-97b2-4ab2-b873-eee8f10c6052",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "b5c99db5-c055-46bc-ae6a-0aa35bf47654",
+        "type": "math/lessThanOrEqual/integer",
+        "metadata": {
+          "positionX": "275.23406933131673",
+          "positionY": "360.5148069934796"
+        },
+        "parameters": {
+          "a": {
+            "link": {
+              "nodeId": "aad7ce23-0678-4c41-b393-334d9e19ee06",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "f3e21e88-a65e-4880-8dd3-ab5959b222b6",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "911a4652-47ff-4bbf-8c52-a16758f8c4f6",
+            "socket": "flow"
+          },
+          "task": {
+            "nodeId": "842fa3be-9748-4dff-8adb-e47588e81064",
+            "socket": "task"
+          }
+        },
+        "metadata": {
+          "positionX": "1038.6142288402082",
+          "positionY": "170.34669481836357"
+        },
+        "parameters": {
+          "task": {
+            "link": {
+              "nodeId": "b832d821-eeb1-4777-95b8-337d39e70ef1",
+              "socket": "Item"
+            }
+          }
+        },
+        "configuration": {
+          "label": "task",
+          "variableId": "50d3050b-62ad-423e-a49c-97780f164127",
+          "socketInputs": [
+            {
+              "name": "task",
+              "valueType": "string"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "task",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "b832d821-eeb1-4777-95b8-337d39e70ef1",
+        "type": "logic/array/removeFirst",
+        "flows": {
+          "Item": {
+            "nodeId": "f3e21e88-a65e-4880-8dd3-ab5959b222b6",
+            "socket": "task"
+          },
+          "flow": {
+            "nodeId": "f3e21e88-a65e-4880-8dd3-ab5959b222b6",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "802.602996348819",
+          "positionY": "174.72290021819106"
+        },
+        "parameters": {
+          "array": {
+            "link": {
+              "nodeId": "cb537176-3691-4508-84e8-ce4c74ed50aa",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {
+          "valueType": "string",
+          "socketOutputs": [
+            {
+              "key": "Item",
+              "name": "Item",
+              "valueType": "string"
+            }
+          ],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "valueTypes",
+            "socketOutputs",
+            "valueTypeOptions"
+          ],
+          "valueTypeOptions": {
+            "values": [
+              "string",
+              "number",
+              "float",
+              "boolean",
+              "object",
+              "array"
+            ],
+            "socketName": "Item"
+          }
+        }
+      },
+      {
+        "id": "d14dda63-4321-4bbd-a7f6-2ec93a51a2f7",
+        "type": "variables/set",
+        "metadata": {
+          "positionX": "4579.115637971308",
+          "positionY": "119.97784840646918"
+        },
+        "parameters": {
+          "tasks": {
+            "link": {
+              "nodeId": "fbebcc62-637b-4ec2-a039-f3b9022843e1",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketInputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "fbebcc62-637b-4ec2-a039-f3b9022843e1",
+        "type": "logic/split/string",
+        "metadata": {
+          "positionX": "4330.92055256146",
+          "positionY": "223.93621982889607"
+        },
+        "parameters": {
+          "string": {
+            "link": {
+              "nodeId": "c6af5b82-338f-4b05-a683-04bc4238d0c5",
+              "socket": "response"
+            }
+          },
+          "seperator": {
+            "value": "\\n"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "5a6f2f7d-e410-4635-86c7-89f14fa8b64b",
+        "type": "variables/get",
+        "flows": {
+          "objective": {
+            "nodeId": "9109643f-103a-48f5-8179-967acc134b88",
+            "socket": "objective"
+          }
+        },
+        "metadata": {
+          "positionX": "3771.4200490920625",
+          "positionY": "299.43961598847613"
+        },
+        "configuration": {
+          "label": "objective",
+          "variableId": "60420481-b77e-4211-8059-e9e03735eac3",
+          "socketOutputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "9109643f-103a-48f5-8179-967acc134b88",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "3768.4112547324685",
+          "positionY": "388.38800535709885"
+        },
+        "parameters": {
+          "tasks": {
+            "link": {
+              "nodeId": "033e6390-dcc0-45fa-b5c3-2475107404f1",
+              "socket": "tasks"
+            }
+          },
+          "objective": {
+            "link": {
+              "nodeId": "5a6f2f7d-e410-4635-86c7-89f14fa8b64b",
+              "socket": "objective"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            },
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "You are tasked with prioritizing the following tasks:\n{{#each tasks}}\n{{this}}\n{{/each}}\nConsider the ultimate objective of your team: {{objective}}\nTasks should be sorted from highest to lowest priority, where higher-priority tasks are those that act as pre-requisites or are more essential for meeting the objective.\nDo not remove any tasks. Return the ranked tasks as a numbered list in the format:\n\n#. First task\n#. Second task\n\nThe entries must be consecutively numbered, starting with 1. The number of each entry must be followed by a period.\n\nDo not include any headers before your ranked list or follow your list with any other output.",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "d99e6af2-715a-4d5f-966c-2c24a5f28ded",
+        "type": "variables/get",
+        "flows": {
+          "tasks": {
+            "nodeId": "54739615-c57d-49db-83c1-e6647d683ae1",
+            "socket": "array"
+          }
+        },
+        "metadata": {
+          "positionX": "3169.326214693855",
+          "positionY": "347.694335625837"
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "4228f6e5-ca26-4a60-9be9-8e3955ba611c",
+        "type": "logic/split/string",
+        "metadata": {
+          "positionX": "2945.2426222751355",
+          "positionY": "296.20918687642865"
+        },
+        "parameters": {
+          "string": {
+            "link": {
+              "nodeId": "e07f2587-b20e-4748-8d59-5dc64648376a",
+              "socket": "result"
+            }
+          },
+          "seperator": {
+            "value": "\\n"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "85b916fb-e07b-439e-aad0-b88e68101163",
+        "type": "variables/get",
+        "flows": {
+          "objective": {
+            "nodeId": "842fa3be-9748-4dff-8adb-e47588e81064",
+            "socket": "objective"
+          }
+        },
+        "metadata": {
+          "positionX": "960.7867796477688",
+          "positionY": "345.4151530890515"
+        },
+        "configuration": {
+          "label": "objective",
+          "variableId": "60420481-b77e-4211-8059-e9e03735eac3",
+          "socketOutputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "842fa3be-9748-4dff-8adb-e47588e81064",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "1302.5100896945053",
+          "positionY": "300.56025742246584"
+        },
+        "parameters": {
+          "task": {
+            "link": {
+              "nodeId": "f3e21e88-a65e-4880-8dd3-ab5959b222b6",
+              "socket": "task"
+            }
+          },
+          "objective": {
+            "link": {
+              "nodeId": "85b916fb-e07b-439e-aad0-b88e68101163",
+              "socket": "objective"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            },
+            {
+              "name": "task",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "Perform one task based on the following objective: {{objective}}\nYour task: {{task}}\nResponse:",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "cbfe778b-02d4-474d-97f7-7c4fcd523c78",
+        "type": "variables/get",
+        "flows": {
+          "task": {
+            "nodeId": "42975465-d822-4e51-9562-41bf55a10ac3",
+            "socket": "task"
+          }
+        },
+        "metadata": {
+          "positionX": "2052.76544205942",
+          "positionY": "743.277944493842"
+        },
+        "configuration": {
+          "label": "task",
+          "variableId": "50d3050b-62ad-423e-a49c-97780f164127",
+          "socketOutputs": [
+            {
+              "name": "task",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "c7ce70ae-52db-4660-9053-4e07b6cf0510",
+        "type": "variables/get",
+        "flows": {
+          "tasks": {
+            "nodeId": "c9c0cd92-97b2-4ab2-b873-eee8f10c6052",
+            "socket": "a"
+          }
+        },
+        "metadata": {
+          "positionX": "2044.6378600772982",
+          "positionY": "304.37165892626155"
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "e07f2587-b20e-4748-8d59-5dc64648376a",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "5b3d40bc-e7e9-46bf-b343-6b8b7f138af1",
+            "socket": "flow"
+          },
+          "result": {
+            "nodeId": "4228f6e5-ca26-4a60-9be9-8e3955ba611c",
+            "socket": "string"
+          }
+        },
+        "metadata": {
+          "positionX": "2947.2170657241245",
+          "positionY": "154.42677508751444"
+        },
+        "parameters": {
+          "result": {
+            "link": {
+              "nodeId": "330f8d4e-5941-4a9e-b257-34987075d671",
+              "socket": "response"
+            }
+          }
+        },
+        "configuration": {
+          "label": "result",
+          "variableId": "cc8e1297-bc62-4e2e-94a6-df439f65d8db",
+          "socketInputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "1f98fae0-82b6-4332-ba5b-096f1b32bb91",
+        "type": "variables/get",
+        "flows": {
+          "objective": {
+            "nodeId": "42975465-d822-4e51-9562-41bf55a10ac3",
+            "socket": "objective"
+          }
+        },
+        "metadata": {
+          "positionX": "2050.5771893089177",
+          "positionY": "665.8792221528269"
+        },
+        "configuration": {
+          "label": "objective",
+          "variableId": "60420481-b77e-4211-8059-e9e03735eac3",
+          "socketOutputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "5890c0e8-5e48-4d98-9ea8-d92b3d69d42f",
+        "type": "variables/get",
+        "flows": {
+          "result": {
+            "nodeId": "42975465-d822-4e51-9562-41bf55a10ac3",
+            "socket": "result"
+          }
+        },
+        "metadata": {
+          "positionX": "2050.4598532358154",
+          "positionY": "593.59875144139"
+        },
+        "configuration": {
+          "label": "result",
+          "variableId": "cc8e1297-bc62-4e2e-94a6-df439f65d8db",
+          "socketOutputs": [
+            {
+              "name": "result",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "c9c0cd92-97b2-4ab2-b873-eee8f10c6052",
+        "type": "logic/array/length",
+        "metadata": {
+          "positionX": "2046.3466684817822",
+          "positionY": "375.4180452906659"
+        },
+        "parameters": {
+          "a": {
+            "link": {
+              "nodeId": "c7ce70ae-52db-4660-9053-4e07b6cf0510",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "ab047cd6-6863-4ae6-aeb9-dacaa9bc564b",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "8cdf92e9-2864-42fb-a836-d648a203e906",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-630.289255603755",
+          "positionY": "-53.84345092473109"
+        },
+        "parameters": {
+          "objective": {
+            "link": {
+              "nodeId": "a405c6e3-4823-467a-ad04-48d6496218c1",
+              "socket": "content"
+            }
+          }
+        },
+        "configuration": {
+          "label": "objective",
+          "variableId": "60420481-b77e-4211-8059-e9e03735eac3",
+          "socketInputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "1601d9d9-624c-4790-8c41-403eda3d48de",
+        "type": "variables/get",
+        "flows": {
+          "objective": {
+            "nodeId": "82203b53-ee60-48d1-a891-1d99a8eb30a7",
+            "socket": "Item"
+          }
+        },
+        "metadata": {
+          "positionX": "-346.58578283674524",
+          "positionY": "204.08873828648188"
+        },
+        "configuration": {
+          "label": "objective",
+          "variableId": "60420481-b77e-4211-8059-e9e03735eac3",
+          "socketOutputs": [
+            {
+              "name": "objective",
+              "valueType": "string"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "2e5d3f10-ce4b-4e9b-a4e7-367f62a0ee88",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "888bbd98-546d-4333-9cf1-e9afce036ae6",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "801.383055217975",
+          "positionY": "-110.8817839781784"
+        },
+        "parameters": {
+          "done": {
+            "value": true
+          }
+        },
+        "configuration": {
+          "label": "done",
+          "variableId": "3bce7cd0-3405-4ed6-a8f7-9cc592dd1a29",
+          "socketInputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "82203b53-ee60-48d1-a891-1d99a8eb30a7",
+        "type": "logic/array/push",
+        "flows": {
+          "flow": {
+            "nodeId": "ff9ade2a-1195-4c9b-a0fb-0d957cdbe622",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-48.332298728659396",
+          "positionY": "-43.30616833652142"
+        },
+        "parameters": {
+          "Item": {
+            "link": {
+              "nodeId": "1601d9d9-624c-4790-8c41-403eda3d48de",
+              "socket": "objective"
+            }
+          },
+          "array": {
+            "link": {
+              "nodeId": "2d024de9-ddce-4653-be68-e60517c37ff7",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {
+          "valueType": "string",
+          "socketInputs": [
+            {
+              "key": "Item",
+              "name": "Item",
+              "valueType": "string"
+            }
+          ],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "valueTypes",
+            "socketInputs",
+            "valueTypeOptions"
+          ],
+          "valueTypeOptions": {
+            "values": [
+              "string",
+              "number",
+              "float",
+              "boolean",
+              "object",
+              "array"
+            ],
+            "socketName": "Item"
+          }
+        }
+      },
+      {
+        "id": "2d024de9-ddce-4653-be68-e60517c37ff7",
+        "type": "variables/get",
+        "flows": {
+          "tasks": {
+            "nodeId": "82203b53-ee60-48d1-a891-1d99a8eb30a7",
+            "socket": "array"
+          }
+        },
+        "metadata": {
+          "positionX": "-342.9732257681935",
+          "positionY": "120.91755397734198"
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "888bbd98-546d-4333-9cf1-e9afce036ae6",
+        "type": "magick/sendMessage",
+        "metadata": {
+          "positionX": "1029.435773136374",
+          "positionY": "-111.2527129961243"
+        },
+        "parameters": {
+          "content": {
+            "value": "ENDING LOOP"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "7782f38f-e18b-4360-b89a-a6b147f8b697",
+        "type": "magick/sendMessage",
+        "metadata": {
+          "positionX": "242.00978996323556",
+          "positionY": "-296.62984964757527"
+        },
+        "parameters": {
+          "content": {
+            "value": "AGI KILLED"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "fd0529e9-04a4-437e-baf7-1ab87d696053",
+        "type": "magick/sendMessage",
+        "metadata": {
+          "positionX": "546.7040261638508",
+          "positionY": "-91.81710563350603"
+        },
+        "parameters": {
+          "content": {
+            "value": "OBJECTIVE COMPLETED"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "4f6ab582-dbee-483b-8c88-e3d7af630794",
+        "type": "flow/branch",
+        "flows": {
+          "true": {
+            "nodeId": "2e5d3f10-ce4b-4e9b-a4e7-367f62a0ee88",
+            "socket": "flow"
+          },
+          "false": {
+            "nodeId": "b832d821-eeb1-4777-95b8-337d39e70ef1",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "555.8042521436028",
+          "positionY": "163.63925307158877"
+        },
+        "parameters": {
+          "condition": {
+            "link": {
+              "nodeId": "b5c99db5-c055-46bc-ae6a-0aa35bf47654",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "9c2c28ac-340d-43d8-abf9-d6ee4a12b377",
+        "type": "flow/whileLoop",
+        "flows": {
+          "loopBody": {
+            "nodeId": "4f6ab582-dbee-483b-8c88-e3d7af630794",
+            "socket": "flow"
+          },
+          "completed": {
+            "nodeId": "fd0529e9-04a4-437e-baf7-1ab87d696053",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "257.5572047160276",
+          "positionY": "93.9195652549833"
+        },
+        "parameters": {
+          "condition": {
+            "link": {
+              "nodeId": "74ebaea9-7fe4-4791-8d95-a5c25d96643c",
+              "socket": "done"
+            }
+          }
+        },
+        "configuration": {
+          "maxIterations": 10
+        }
+      },
+      {
+        "id": "d10dc68b-1ec9-4aaf-a1e2-c6b5e4edf95b",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "9c2c28ac-340d-43d8-abf9-d6ee4a12b377",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-43.79727266748796",
+          "positionY": "274.12242704260643"
+        },
+        "configuration": {
+          "label": "done",
+          "variableId": "3bce7cd0-3405-4ed6-a8f7-9cc592dd1a29",
+          "socketInputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "7b128018-0fdf-4694-a14f-287510375032",
+        "type": "variables/set",
+        "flows": {
+          "flow": {
+            "nodeId": "7782f38f-e18b-4360-b89a-a6b147f8b697",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-45.022010962633885",
+          "positionY": "-189.30544497702294"
+        },
+        "parameters": {
+          "done": {
+            "value": true
+          }
+        },
+        "configuration": {
+          "label": "done",
+          "variableId": "3bce7cd0-3405-4ed6-a8f7-9cc592dd1a29",
+          "socketInputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "socketOutputs": [
+            {
+              "name": "done",
+              "valueType": "boolean"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "socketInputs",
+            "label"
+          ]
+        }
+      },
+      {
+        "id": "d95a6a45-1b2d-4a33-92d3-ecff25ac4e72",
+        "type": "logic/string/match",
+        "metadata": {
+          "positionX": "-631.4568194730509",
+          "positionY": "75.2665452321545"
+        },
+        "parameters": {
+          "match": {
+            "link": {
+              "nodeId": "a405c6e3-4823-467a-ad04-48d6496218c1",
+              "socket": "content"
+            }
+          },
+          "string": {
+            "value": "kill"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "8cdf92e9-2864-42fb-a836-d648a203e906",
+        "type": "flow/branch",
+        "flows": {
+          "true": {
+            "nodeId": "7b128018-0fdf-4694-a14f-287510375032",
+            "socket": "flow"
+          },
+          "false": {
+            "nodeId": "82203b53-ee60-48d1-a891-1d99a8eb30a7",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-336.4594072187351",
+          "positionY": "-47.68926075405659"
+        },
+        "parameters": {
+          "condition": {
+            "link": {
+              "nodeId": "d95a6a45-1b2d-4a33-92d3-ecff25ac4e72",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "aad7ce23-0678-4c41-b393-334d9e19ee06",
+        "type": "logic/array/length",
+        "metadata": {
+          "positionX": "275.2097779791102",
+          "positionY": "249.9151331428231"
+        },
+        "parameters": {
+          "a": {
+            "link": {
+              "nodeId": "ff9ade2a-1195-4c9b-a0fb-0d957cdbe622",
+              "socket": "tasks"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "cb537176-3691-4508-84e8-ce4c74ed50aa",
+        "type": "variables/get",
+        "flows": {
+          "tasks": {
+            "nodeId": "b832d821-eeb1-4777-95b8-337d39e70ef1",
+            "socket": "array"
+          }
+        },
+        "metadata": {
+          "positionX": "555.4707468574261",
+          "positionY": "330.92785873315114"
+        },
+        "configuration": {
+          "label": "tasks",
+          "variableId": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+          "socketOutputs": [
+            {
+              "name": "tasks",
+              "valueType": "array"
+            }
+          ],
+          "variableNames": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "variableId",
+            "socketOutputs",
+            "label"
+          ]
+        }
+      }
+    ],
+    "variables": [
+      {
+        "id": "66f5e5bd-d969-4389-ade9-0ae5dae9145d",
+        "name": "tasks",
+        "initialValue": [],
+        "valueTypeName": "array"
+      },
+      {
+        "id": "60420481-b77e-4211-8059-e9e03735eac3",
+        "name": "objective",
+        "initialValue": [],
+        "valueTypeName": "string"
+      },
+      {
+        "id": "3bce7cd0-3405-4ed6-a8f7-9cc592dd1a29",
+        "name": "done",
+        "initialValue": [],
+        "valueTypeName": "boolean"
+      },
+      {
+        "id": "6aa61b48-1f8d-48d3-8c7d-be5d22f34367",
+        "name": "initialTask",
+        "initialValue": "Develop a task list",
+        "valueTypeName": "string"
+      },
+      {
+        "id": "cc8e1297-bc62-4e2e-94a6-df439f65d8db",
+        "name": "result",
+        "initialValue": [],
+        "valueTypeName": "string"
+      },
+      {
+        "id": "50d3050b-62ad-423e-a49c-97780f164127",
+        "name": "task",
+        "initialValue": [],
+        "valueTypeName": "string"
+      },
+      {
+        "id": "ec39edad-8b0d-43a4-9221-eca541a02a1b",
+        "name": "personality",
+        "initialValue": [],
+        "valueTypeName": "string"
+      }
+    ],
+    "customEvents": []
+  }
+}

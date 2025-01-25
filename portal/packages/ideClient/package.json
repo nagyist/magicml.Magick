@@ -1,0 +1,13 @@
+{
+  "name": "ideClient",
+  "version": "0.0.1",
+  "dependencies": {
+    "axios": "1.6.8",
+    "@feathersjs/feathers": "5.0.25",
+    "@feathersjs/rest-client": "5.0.5",
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

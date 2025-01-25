@@ -1,0 +1,248 @@
+generator client {
+    provider        = "prisma-client-js"
+    output          = "./client-portal"
+    previewFeatures = ["fullTextSearch", "multiSchema", "postgresqlExtensions"]
+    name            = "prisma"
+    binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+    provider          = "postgresql"
+    url               = env("PORTAL_DATABASE_URL")
+    shadowDatabaseUrl = env("PORTAL_SHADOW_DATABASE_URL")
+    extensions        = [uuid_ossp(map: "uuid-ossp"), vector]
+    schemas           = ["portal"]
+}
+
+model Project {
+    id          String    @id @default(cuid())
+    owner       String
+    name        String
+    description String?
+    createdAt   DateTime? @default(now())
+    deletedAt   DateTime?
+    updatedAt   DateTime? @updatedAt
+    image       String?
+    lastActive  DateTime?
+
+    @@map("projects")
+    @@schema("portal")
+}
+
+model Template {
+    id                  String               @id @default(cuid())
+    name                String
+    description         String?
+    image               String?
+    graph               Json?
+    createdAt           DateTime?            @default(now())
+    deletedAt           DateTime?
+    updatedAt           DateTime?            @updatedAt
+    spells              String[]             @default([])
+    type                TemplateType         @default(OFFICIAL)
+    public              Boolean              @default(false)
+    userId              String?
+    usageCount          Int                  @default(0)
+    ogAgentId           String?
+    templateVersions    TemplateVersion[]
+    templateCollections TemplateCollection[]
+
+    @@map("templates")
+    @@schema("portal")
+}
+
+model TemplateVersion {
+    id         String   @id @default(cuid())
+    templateId String
+    version    Int
+    spells     Json[]
+    metadata   Json?
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    Template   Template @relation(fields: [templateId], references: [id])
+
+    @@unique([templateId, version])
+    @@map("template_versions")
+    @@schema("portal")
+}
+
+model TemplateCollection {
+    id          String    @id @default(cuid())
+    name        String
+    description String?
+    templates   Json
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    Template    Template? @relation(fields: [templateId], references: [id])
+    templateId  String?
+
+    @@map("template_collections")
+    @@schema("portal")
+}
+
+model TemplateRating {
+    id         String   @id @default(cuid())
+    templateId String
+    userId     String
+    rating     Int
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+    @@unique([templateId, userId])
+    @@map("template_ratings")
+    @@schema("portal")
+}
+
+enum TemplateType {
+    OFFICIAL
+    COMMUNITY
+
+    @@schema("portal")
+}
+
+model PublicAgent {
+    id          String     @id @default(cuid())
+    agentId     String     @unique
+    userId      String
+    madePublic  DateTime   @default(now())
+    deletedAt   DateTime?
+    description String     @default("")
+    remixable   Boolean    @default(false)
+    isTemplate  Boolean    @default(false)
+    featured    Boolean    @default(false)
+    comments    Comments[]
+    likes       Likes[]
+    Reports     Reports[]
+
+    @@map("publicAgents")
+    @@schema("portal")
+}
+
+model Reports {
+    id            String      @id @default(cuid())
+    publicAgentId String
+    createdAt     DateTime    @default(now())
+    message       String
+    publicAgent   PublicAgent @relation(fields: [publicAgentId], references: [id], onDelete: Cascade)
+
+    @@map("reports")
+    @@schema("portal")
+}
+
+model Likes {
+    id            String      @id @default(cuid())
+    userId        String
+    publicAgentId String
+    createdAt     DateTime    @default(now())
+    updatedAt     DateTime?   @updatedAt
+    publicAgent   PublicAgent @relation(fields: [publicAgentId], references: [id], onDelete: Cascade)
+
+    @@unique([userId, publicAgentId])
+    @@map("likes")
+    @@schema("portal")
+}
+
+model Comments {
+    id            String      @id @default(cuid())
+    userId        String
+    publicAgentId String
+    content       String
+    createdAt     DateTime    @default(now())
+    updatedAt     DateTime?   @updatedAt
+    deletedAt     DateTime?
+    publicAgent   PublicAgent @relation(fields: [publicAgentId], references: [id], onDelete: Cascade)
+
+    @@map("comments")
+    @@schema("portal")
+}
+
+model AnonymousUser {
+    id           String    @id @default(cuid())
+    createdAt    DateTime  @default(now())
+    anonymousId  String    @unique
+    fingerprint  String
+    lastAccessed DateTime?
+
+    @@schema("portal")
+}
+
+model Budget {
+    id          String    @id @default(cuid())
+    userId      String    @unique
+    balance     Decimal   @default(0)
+    currentCost Decimal?  @default(0)
+    modelCost   Json?     @default("{}")
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime? @updatedAt
+
+    @@map("budget")
+    @@schema("portal")
+}
+
+model Promotion {
+    id          String        @id @default(cuid())
+    name        String
+    userId      String
+    type        PromotionType
+    amount      Decimal
+    description String?
+    validFrom   DateTime
+    validUntil  DateTime
+    isUsed      Boolean       @default(false)
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime?     @updatedAt
+
+    @@map("promotions")
+    @@schema("portal")
+}
+
+model PromotionCode {
+    id          String   @id @default(cuid())
+    code        String   @unique
+    description String?
+    couponId    String
+    userId      String   @unique
+    isUsed      Boolean  @default(false)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    @@map("promotion_codes")
+    @@schema("portal")
+}
+
+model Transaction {
+    id        String            @id @default(cuid())
+    userId    String
+    projectId String?
+    agentId   String?
+    cost      Decimal
+    success   Boolean
+    source    TransactionSource
+    createdAt DateTime          @default(now())
+
+    @@map("transactions")
+    @@schema("portal")
+}
+
+enum PromotionType {
+    INTRO
+    ADMIN
+    SUBSCRIPTION
+
+    @@schema("portal")
+}
+
+enum SubscriptionType {
+    FREE
+    STANDARD
+    PREMIUM
+
+    @@schema("portal")
+}
+
+enum TransactionSource {
+    PROMOTION
+    BUDGET
+
+    @@schema("portal")
+}
