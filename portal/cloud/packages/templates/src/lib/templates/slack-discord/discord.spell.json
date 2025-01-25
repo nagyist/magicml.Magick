@@ -1,0 +1,93 @@
+{
+  "id": "9686c6e1-67fb-4d8c-bf7b-f3dbcf854527",
+  "name": "discord",
+  "projectId": "clswgo3ub000081wshkg986gl",
+  "createdAt": "2024-02-22T00:15:00.128Z",
+  "updatedAt": "1708561073465",
+  "type": "behave",
+  "spellReleaseId": null,
+  "graph": {
+    "nodes": [
+      {
+        "id": "20695da3-078b-4b30-9977-abcead883fc0",
+        "type": "magick/generateText",
+        "flows": {
+          "done": {
+            "nodeId": "cdf0c71d-578b-4768-8fad-84101acc6e97",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "288.3926399999998",
+          "positionY": "300.1126400000001"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "1c6a0ddb-b9c9-449f-b3d6-893ff0b0996a",
+              "socket": "content"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo",
+          "models": [],
+          "customBaseUrl": "",
+          "modelProvider": "openai",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "customBaseUrl"
+          ]
+        }
+      },
+      {
+        "id": "cdf0c71d-578b-4768-8fad-84101acc6e97",
+        "type": "discord/sendMessage",
+        "metadata": {
+          "positionX": "550.4127359999998",
+          "positionY": "308.82176"
+        },
+        "parameters": {
+          "content": {
+            "link": {
+              "nodeId": "20695da3-078b-4b30-9977-abcead883fc0",
+              "socket": "response"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "1c6a0ddb-b9c9-449f-b3d6-893ff0b0996a",
+        "type": "discord/onMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "20695da3-078b-4b30-9977-abcead883fc0",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "19.14016000000015",
+          "positionY": "299.29088"
+        },
+        "configuration": {
+          "eventState": [],
+          "hiddenProperties": ["hiddenProperties", "eventState"],
+          "eventStateProperties": [
+            "connector",
+            "client",
+            "channel",
+            "agentId",
+            "sender"
+          ]
+        }
+      }
+    ],
+    "variables": [],
+    "customEvents": []
+  }
+}

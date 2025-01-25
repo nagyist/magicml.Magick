@@ -1,0 +1,31 @@
+{
+  "name": "portal-billing",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/packages/billing/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/packages/billing",
+        "tsConfig": "portal/cloud/packages/billing/tsconfig.lib.json",
+        "packageJson": "portal/cloud/packages/billing/package.json",
+        "main": "portal/cloud/packages/billing/src/index.ts",
+        "assets": ["portal/cloud/packages/billing/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "portal/cloud/packages/billing/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

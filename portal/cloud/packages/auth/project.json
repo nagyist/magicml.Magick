@@ -1,0 +1,31 @@
+{
+  "name": "portal-auth",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/packages/auth/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/packages/auth",
+        "tsConfig": "portal/cloud/packages/auth/tsconfig.lib.json",
+        "packageJson": "portal/cloud/packages/auth/package.json",
+        "main": "portal/cloud/packages/auth/src/index.ts",
+        "assets": ["portal/cloud/packages/auth/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "portal/cloud/packages/auth/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "pages-templates",
+  "version": "0.0.1",
+  "dependencies": {
+    "@clerk/nextjs": "^5.0.12",
+    "@magickml/pages-shared": "0.0.1",
+    "@magickml/portal-server-provider": "0.0.1",
+    "@magickml/portal-ui": "0.0.1"
+  }
+}

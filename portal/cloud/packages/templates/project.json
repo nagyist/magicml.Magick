@@ -1,0 +1,30 @@
+{
+  "name": "portal-templates",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/packages/templates/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/packages/templates",
+        "tsConfig": "portal/cloud/packages/templates/tsconfig.lib.json",
+        "packageJson": "portal/cloud/packages/templates/package.json",
+        "main": "portal/cloud/packages/templates/src/index.ts",
+        "assets": ["portal/cloud/packages/templates/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "seed": {
+      "command": "ts-node ./src/lib/seed.ts",
+      "options": {
+        "cwd": "portal/cloud/packages/templates"
+      }
+    }
+  },
+  "tags": []
+}

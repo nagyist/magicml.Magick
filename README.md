@@ -90,76 +90,15 @@ Triggers tell nodes to start asynchronous tasks. Some nodes can process data wit
 
 # ⚙️ Installation
 
-## 📚 [Documentation / Guide](https://magick-docs.vercel.app/)
+Please follow the installation guide for your operating system:
 
-### Prerequisites
+- [macOS Installation Guide](docs/installation/macos.md)
+- [Linux Installation Guide](docs/installation/linux.md)
+- [Windows Installation Guide](docs/installation/windows.md)
 
-Before you start, ensure you have the following software installed on your machine:
-
-- **git**: Version control system, required for cloning the repository.
-  - [Download git](https://git-scm.com/downloads)
-- **node.js 18+**: JavaScript runtime, needed for running the application.
-  - [Download Node.js](https://nodejs.org/en/download/)
-- **Docker**: Enables you to run the project within containers for easier setup and distribution.
-  - [Download Docker Desktop](https://www.docker.com/products/docker-desktop)
-
-Follow the respective installation guides to set up each piece of software.
-
-- Install **pipx**: A tool for installing and running Python applications in isolated environments.
-
-On Unix and macOS: Open a terminal and run the following command:
-
-```bash
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-```
-
-On Windows: Open a command prompt and execute:
-
-```bash
-py -m pip install --user pipx
-py -m pipx ensurepath
-```
-
-Install Poetry (Manages python packages)
-
-```bash
-pipx install poetry
-```
-
-Verify Installation
-
-```bash
-pipx --version
-```
-
-Once installed, proceed to set up Magick.
-
-## Setup
-
-Clone and set up Magick
-
-```bash
-git clone https://github.com/Oneirocom/Magick
-cd Magick
-npm install
-poetry install --no-root
-npm run dev
-```
-
-## Run Magick!
-
-```bash
-npm run dev
-```
-
-Note: Installation is automatic. Most Node projects require `npm install` - With Magick, dependencies will automatically be installed for you. Linux users may need to enter sudo password to install some dependencies.
-
-#### Build
-
-Build will take some time initially. When everything is ready, the client will be ready at [localhost:4200](http://localhost:4200/home)
-
-_Please be aware Magick is under heavy development which may cause breaking changes._
+For detailed development documentation and architecture overview, see:
+- [Development Guide](docs/development/README.md)
+- [Architecture Overview](docs/architecture/README.md)
 
 ## Database
 
@@ -182,8 +121,7 @@ The following documents should help you with setup:
 
 Magick uses [Feathers 5](https://feathersjs.com/) for backend, which in turn uses [Knex](https://knexjs.org/) for making database queries. We will offer a better database configuration experience in the future. For now, you will need to manually configure the database connection in the [`.env` file](.env) and then run the migration script.
 
-```
-cd apps/server
+```cd apps/server
 npm run migrate
 ```
 

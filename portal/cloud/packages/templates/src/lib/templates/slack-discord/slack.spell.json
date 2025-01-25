@@ -1,0 +1,83 @@
+{
+  "id": "5ccf70fd-19d6-47a9-aa69-49ad2e842713",
+  "name": "slack",
+  "projectId": "clswgo3ub000081wshkg986gl",
+  "createdAt": "2024-02-22T00:15:04.718Z",
+  "updatedAt": "1708561042461",
+  "type": "behave",
+  "spellReleaseId": null,
+  "graph": {
+    "nodes": [
+      {
+        "id": "828638b9-b7f0-4cb2-8ce4-d88fa54c0a57",
+        "type": "magick/generateText",
+        "flows": {
+          "done": {
+            "nodeId": "c8178006-8f61-4e02-ae46-9bca65b744e0",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "115.03392000000031",
+          "positionY": "178.55024000000006"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "3efe3492-f476-4422-81fe-067a6bde618d",
+              "socket": "content"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo",
+          "models": [],
+          "customBaseUrl": "",
+          "modelProvider": "openai",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "customBaseUrl"
+          ]
+        }
+      },
+      {
+        "id": "3efe3492-f476-4422-81fe-067a6bde618d",
+        "type": "slack/onMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "828638b9-b7f0-4cb2-8ce4-d88fa54c0a57",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-169.87871999999982",
+          "positionY": "177.30608"
+        },
+        "configuration": {}
+      },
+      {
+        "id": "c8178006-8f61-4e02-ae46-9bca65b744e0",
+        "type": "slack/sendMessage",
+        "metadata": {
+          "positionX": "400.67679999999996",
+          "positionY": "185.91536"
+        },
+        "parameters": {
+          "content": {
+            "link": {
+              "nodeId": "828638b9-b7f0-4cb2-8ce4-d88fa54c0a57",
+              "socket": "response"
+            }
+          }
+        },
+        "configuration": {}
+      }
+    ],
+    "variables": [],
+    "customEvents": []
+  }
+}

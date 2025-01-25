@@ -1,0 +1,248 @@
+{
+  "id": "6a04dc6a-9c1b-4299-9abe-0437a767aea8",
+  "name": "knowledge bot",
+  "projectId": "clrqy9mej00040alamk7uro2l",
+  "createdAt": "2024-02-09T00:04:45.572Z",
+  "updatedAt": null,
+  "type": "behave",
+  "spellReleaseId": null,
+  "graph": {
+    "nodes": [
+      {
+        "id": "930bc179-a30a-4358-a565-f92125703a17",
+        "type": "magick/streamMessage",
+        "metadata": {
+          "positionX": "1257.0304900441781",
+          "positionY": "236.34273817400327"
+        },
+        "parameters": {
+          "content": {
+            "link": {
+              "nodeId": "b7a17dc3-095c-46b5-acd2-be9f4e2718ac",
+              "socket": "stream"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "5ed0fddd-a3ce-4380-8c02-5af651626ce5",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "746.654279817275",
+          "positionY": "278.3220526771893"
+        },
+        "parameters": {
+          "query": {
+            "link": {
+              "nodeId": "caf16e18-7263-44b4-be85-2dce99a1a374",
+              "socket": "content"
+            }
+          },
+          "knowledge": {
+            "link": {
+              "nodeId": "67c1a8cb-23b9-4611-8c41-a8010ee796d0",
+              "socket": "knowledge"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "knowledge",
+              "valueType": "array"
+            },
+            {
+              "name": "query",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "You are a question answering assistant hwo is very helpful and able to query knowledge you have been given.  You have been asked the following question:\n\n{{query}}\n\nYou have checked your memory and retreived the following information:\n\n{{#each knowledge}}\n{{this}}\n{{/each}}\n\nAnswer the query \"{{ query}} \" to the best of you abilities synthesizing and taking into account everything from y our memory. Keep your responses to a single paragraph, and prompt the user to ask questions to explain anything which may be unclear.",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "b7a17dc3-095c-46b5-acd2-be9f4e2718ac",
+        "type": "magick/generateText",
+        "flows": {
+          "onStream": {
+            "nodeId": "930bc179-a30a-4358-a565-f92125703a17",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "980.9157256810331",
+          "positionY": "183.31455885977113"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "5ed0fddd-a3ce-4380-8c02-5af651626ce5",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo-16k-0613",
+          "models": [],
+          "customBaseUrl": "",
+          "modelProvider": "openai",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "customBaseUrl"
+          ]
+        }
+      },
+      {
+        "id": "67c1a8cb-23b9-4611-8c41-a8010ee796d0",
+        "type": "action/knowledge/searchMany ",
+        "flows": {
+          "flow": {
+            "nodeId": "b7a17dc3-095c-46b5-acd2-be9f4e2718ac",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "500.3429501910398",
+          "positionY": "185.31194744848608"
+        },
+        "parameters": {
+          "queries": {
+            "link": {
+              "nodeId": "53cb6ec6-33c2-4c4f-b959-f44c36eed66e",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "53cb6ec6-33c2-4c4f-b959-f44c36eed66e",
+        "type": "logic/split/string",
+        "metadata": {
+          "positionX": "264.4430797634411",
+          "positionY": "248.18329126756606"
+        },
+        "parameters": {
+          "string": {
+            "link": {
+              "nodeId": "b60217f9-7e73-4df7-8d1d-d2db177f0a03",
+              "socket": "response"
+            }
+          },
+          "seperator": {
+            "value": "\\n"
+          }
+        },
+        "configuration": {}
+      },
+      {
+        "id": "b60217f9-7e73-4df7-8d1d-d2db177f0a03",
+        "type": "magick/generateText",
+        "flows": {
+          "done": {
+            "nodeId": "67c1a8cb-23b9-4611-8c41-a8010ee796d0",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "14.753170674061494",
+          "positionY": "189.32368974416573"
+        },
+        "parameters": {
+          "prompt": {
+            "link": {
+              "nodeId": "f4e5f52c-2125-4916-9c2c-79983cfdf775",
+              "socket": "result"
+            }
+          }
+        },
+        "configuration": {
+          "model": "gpt-3.5-turbo-16k",
+          "models": [],
+          "customBaseUrl": "",
+          "modelProvider": "openai",
+          "modelProviders": [],
+          "hiddenProperties": [
+            "hiddenProperties",
+            "modelProvider",
+            "model",
+            "models",
+            "customBaseUrl"
+          ]
+        }
+      },
+      {
+        "id": "f4e5f52c-2125-4916-9c2c-79983cfdf775",
+        "type": "logic/string/template",
+        "metadata": {
+          "positionX": "-272.8409268260681",
+          "positionY": "329.92014138429766"
+        },
+        "parameters": {
+          "query": {
+            "link": {
+              "nodeId": "caf16e18-7263-44b4-be85-2dce99a1a374",
+              "socket": "content"
+            }
+          }
+        },
+        "configuration": {
+          "socketInputs": [
+            {
+              "name": "query",
+              "valueType": "string"
+            }
+          ],
+          "socketValues": ["string", "array", "boolean", "integer"],
+          "textEditorData": "You are the memory system for a cognitive architecture of an agent. \n\nIt is your job to help query memory.  You have been given the following query:\n\n{{query}}\n\nGenerate five questions which you would ask to your memory to retreive information about this query.  These questions should be diverse and should enable you to get a well rounded quantity of information from your memory. \n\nGenerate these questions each on a new line.  This is for a project and they can't have numbers or any other characters before the questions.  One question per line for five lines.",
+          "hiddenProperties": ["hiddenProperties", "textEditorOptions"],
+          "textEditorOptions": {
+            "options": {
+              "name": "Text template",
+              "language": "handlebars"
+            }
+          }
+        }
+      },
+      {
+        "id": "caf16e18-7263-44b4-be85-2dce99a1a374",
+        "type": "magick/onMessage",
+        "flows": {
+          "flow": {
+            "nodeId": "b60217f9-7e73-4df7-8d1d-d2db177f0a03",
+            "socket": "flow"
+          }
+        },
+        "metadata": {
+          "positionX": "-280.3469584638783",
+          "positionY": "197.2023758283737"
+        },
+        "configuration": {
+          "eventState": [],
+          "hiddenProperties": ["hiddenProperties", "eventState"],
+          "eventStateProperties": [
+            "connector",
+            "client",
+            "channel",
+            "agentId",
+            "sender"
+          ]
+        }
+      }
+    ],
+    "variables": [],
+    "customEvents": []
+  }
+}
