@@ -8,31 +8,36 @@ magick/
 │   ├── client/             # Frontend client application
 │   ├── docs/               # Documentation site
 │   └── server/             # Backend server application
-├── packages/               # Shared packages and libraries
-├── plugins/                # Plugin system
-└── portal/                # Portal submodule (managed separately)
+├── packages/               # Core packages and shared libraries
+├── plugins/                # Plugin system implementations
+├── portal/                # Portal web application and related services
+└── scripts/                # Build and deployment scripts
 ```
 
 ## Development Workflow
 
 1. **Setup Your Environment**
+
    - Follow the installation guide for your operating system in `docs/installation/`
    - Make sure all prerequisites are installed and working
    - Verify you can run the development server with `npm run dev`
 
 2. **Understanding the Codebase**
+
    - The project uses a monorepo structure managed with npm workspaces
    - Frontend is built with React and uses a node-based visual programming interface
    - Backend uses Feathers.js with PostgreSQL database
    - Plugin system allows for extensible functionality
 
 3. **Making Changes**
+
    - Create a new branch for your changes
    - Follow the coding style of the existing codebase
    - Add tests for new functionality
    - Update documentation as needed
 
 4. **Testing**
+
    - Run unit tests: `npm test`
    - Run integration tests: `npm run test:integration`
    - Test your changes across supported platforms
@@ -111,4 +116,4 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 - Development process
 - Pull request guidelines
 - Coding standards
-- Testing requirements 
+- Testing requirements

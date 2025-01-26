@@ -20,11 +20,6 @@ RUN git clone --branch ${BRANCH} --depth 1 https://www.github.com/oneirocom/magi
 
 WORKDIR /app
 
-# Clone the submodule
-RUN git submodule update --init --recursive portal/cloud
-
-# RUN poetry install --no-root
-
 RUN npm install
 
 RUN npm run build-cloud-agent-worker

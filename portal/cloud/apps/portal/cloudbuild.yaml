@@ -13,14 +13,6 @@ steps:
       - '-c'
       - >
         git clone https://$$(cat token.txt)@github.com/oneirocom/magick.git
-
-        cd magick
-
-        git submodule init
-
-        git -c submodule."portal/cloud".url=https://$$(cat
-        ../token.txt)@github.com/oneirocom/portal.git submodule update
-        --recursive portal/cloud
     entrypoint: bash
   - name: gcr.io/cloud-builders/npm
     args:
