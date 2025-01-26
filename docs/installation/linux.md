@@ -2,193 +2,140 @@
 
 ## Project Architecture Overview
 
-Before starting the installation, it's important to understand the project structure:
+This project consists of multiple services that work together. For a detailed understanding of the service hierarchy and how they interact, please see [Architecture Overview](../architecture.md).
 
-- The `@magickml/client` is a library of components and utilities used by other parts of the system, not a standalone application
-- The portal is the main web interface that uses this client library
-- The system requires several services (PostgreSQL, Redis, S3) which are managed through Docker
+Key services that will be running:
+
+- PostgreSQL databases (Main & Shadow) for data storage
+- Redis for caching and real-time updates
+- S3Mock for file storage
+- IDE/Agent Server (port 3030) for backend operations
+- Portal Frontend (port 3000) for user interface
 
 ## Prerequisites
 
-Before installing Magick, ensure you have the following prerequisites installed:
-
-1. **Git**
+1. **Node.js 18+**
 
    ```bash
-   # Ubuntu/Debian
-   sudo apt-get update
-   sudo apt-get install git
-
-   # Fedora
-   sudo dnf install git
-
-   # Arch Linux
-   sudo pacman -S git
-   ```
-
-2. **Node.js 18+**
-
-   ```bash
-   # Using Node Version Manager (recommended)
-   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-   source ~/.bashrc  # or source ~/.zshrc
-   nvm install 18
-   nvm use 18
-
-   # Or using package manager
-   # Ubuntu/Debian
    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
-
-   # Fedora
-   curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
-   sudo dnf install -y nodejs
    ```
 
-3. **Docker**
+2. **Docker & Docker Compose**
 
    ```bash
-   # Ubuntu/Debian
-   sudo apt-get update
-   sudo apt-get install docker.io docker-compose
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   sudo usermod -aG docker $USER  # Log out and back in after this
+   # Install Docker
+   curl -fsSL https://get.docker.com -o get-docker.sh
+   sudo sh get-docker.sh
+   sudo usermod -aG docker $USER
 
-   # Fedora
-   sudo dnf install docker docker-compose
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   sudo usermod -aG docker $USER  # Log out and back in after this
+   # Install Docker Compose
+   sudo apt-get install docker-compose
+   ```
 
-   # Arch Linux
-   sudo pacman -S docker docker-compose
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   sudo usermod -aG docker $USER  # Log out and back in after this
+   Note: Log out and back in for the docker group changes to take effect.
+
+3. **Git**
+
+   ```bash
+   sudo apt-get install git
    ```
 
 4. **Python Tools**
-
    ```bash
-   # Install pip and pipx
-   sudo apt-get install python3-pip  # Ubuntu/Debian
-   sudo dnf install python3-pip      # Fedora
-   sudo pacman -S python-pip         # Arch Linux
-
+   sudo apt-get install python3-pip
    python3 -m pip install --user pipx
    python3 -m pipx ensurepath
-
-   # Install Poetry
-   pipx install poetry
    ```
 
 ## Installation Steps
 
-1. Clone the repository:
+1. **Clone Repository**
 
    ```bash
    git clone https://github.com/Oneirocom/Magick
    cd Magick
    ```
 
-2. Set up environment variables:
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment**
 
    ```bash
    cp .env.example .env.local
    ```
 
-   You'll need to set up authentication with Clerk:
+   The default development URLs will be:
 
-   1. Create a free account at [dashboard.clerk.com](https://dashboard.clerk.com)
-   2. Create a new application:
-      ![Create Clerk Application](../images/create-application.png)
-      - Click "Add Application"
-      - Name your application (e.g. "Magick")
-      - Under "Sign-in methods", enable Email and Google
-      - Click "Create Application"
-   3. Get your API keys:
-      ![Update Environment Values](../images/update-application-env-values.png)
-      - From your Clerk dashboard, find your API keys under the "API Keys" section
-      - Copy both the "Publishable Key" and "Secret Key"
-   4. Add them to your `.env.local`:
-      ```
-      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_publishable_key
-      CLERK_SECRET_KEY=sk_test_your_secret_key
-      ```
+   - Portal Frontend: http://localhost:3000
+   - IDE/Agent Server: http://localhost:3030
 
-3. Install dependencies:
+4. **Start Infrastructure Services**
 
    ```bash
-   npm install
-   poetry install --no-root
+   npm run portal:up
    ```
 
-4. Initialize the database services:
+   This starts PostgreSQL, Redis, and S3Mock containers.
+
+5. **Initialize Databases**
 
    ```bash
-   # Start required containers (PostgreSQL, Redis, S3mock)
-   npm run portal:up
-
-   # Wait a few seconds for containers to be ready, then:
    npm run db:init        # Initialize main database
    npm run portal:db:init # Initialize portal database and seed templates
-   npm run bucket:init    # Initialize S3 buckets
    ```
 
-   Note: The `portal:db:init` command includes several steps:
+6. **Start Backend Server**
 
-   - Generating the database client
-   - Running migrations to create tables
-   - Seeding the database with initial templates (required for the template gallery)
-
-5. Start the development environment:
    ```bash
-   # Start the portal in development mode
-   npm run dev:portal     # The portal will be available at http://localhost:4000
+   npm run dev:server
    ```
 
-## Database Setup
-
-Magick uses PostgreSQL by default. If you're using the default configuration:
-
-1. Make sure Docker is running:
+7. **Start Portal Frontend**
    ```bash
-   sudo systemctl status docker
-   ```
-2. The database will be automatically created on first run
-
-To use a custom database:
-
-1. Edit the `.env` file to update database connection settings
-2. Run migrations:
-   ```bash
-   cd apps/server
-   npm run migrate
+   npm run portal:dev
    ```
 
-## Development Tools
+## Verification
 
-### Chrome Self-Signed Certificates
+After starting all services, you should be able to access:
 
-For local development with self-signed certificates:
-
-1. Open Chrome
-2. Navigate to: `chrome://flags/#allow-insecure-localhost`
-3. Enable the flag
-
-### Webhooks Setup (Optional)
-
-For features requiring webhooks (e.g., GitHub integration):
-
-1. Create an [ngrok](https://ngrok.com/) account
-2. Add your ngrok auth token to the `.env` file
+- Portal Frontend: http://localhost:3000
+- IDE/Agent Server: http://localhost:3030
 
 ## Troubleshooting
 
-- If you encounter permission issues during installation, you may need to use `sudo` for some commands
-- For database issues:
-  - Ensure Docker is running: `sudo systemctl status docker`
-  - Check if port 5432 is available: `sudo lsof -i :5432`
-- Check the logs in `apps/server/logs` for detailed error messages
-- If you can't connect to Docker without sudo, make sure you've added your user to the docker group and logged out/in
+If you encounter issues:
+
+1. Ensure all required services are running (check Docker status with `docker ps`)
+2. Verify environment variables in `.env.local`
+3. Check service logs for specific errors
+4. Refer to [Architecture Overview](../architecture.md) for service dependencies
+
+### Common Linux-Specific Issues
+
+1. **Docker Permission Issues**
+
+   ```bash
+   # If you get permission errors with Docker:
+   sudo usermod -aG docker $USER
+   # Then log out and back in
+   ```
+
+2. **Port Conflicts**
+
+   ```bash
+   # Check if ports are already in use:
+   sudo lsof -i :3000
+   sudo lsof -i :3030
+   ```
+
+3. **System Dependencies**
+   ```bash
+   # If you're missing build essentials:
+   sudo apt-get install build-essential
+   ```

@@ -2,174 +2,154 @@
 
 ## Project Architecture Overview
 
-Before starting the installation, it's important to understand the project structure:
+This project consists of multiple services that work together. For a detailed understanding of the service hierarchy and how they interact, please see [Architecture Overview](../architecture.md).
 
-- The `@magickml/client` is a library of components and utilities used by other parts of the system, not a standalone application
-- The portal is the main web interface that uses this client library
-- The system requires several services (PostgreSQL, Redis, S3) which are managed through Docker
+Key services that will be running:
+
+- PostgreSQL databases (Main & Shadow) for data storage
+- Redis for caching and real-time updates
+- S3Mock for file storage
+- IDE/Agent Server (port 3030) for backend operations
+- Portal Frontend (port 3000) for user interface
 
 ## Prerequisites
 
-Before installing Magick, ensure you have the following prerequisites installed:
-
-1. **Git**
-
-   - Download and install from [git-scm.com](https://git-scm.com/download/win)
-   - During installation:
-     - Choose "Use Git from Git Bash only" or "Use Git from the Windows Command Prompt"
-     - Choose "Checkout as-is, commit Unix-style line endings"
-
-2. **Node.js 18+**
+1. **Node.js 18+**
 
    - Download and install from [nodejs.org](https://nodejs.org/)
-   - Choose the LTS version (18.x or later)
-   - Ensure "Add to PATH" is selected during installation
+   - Choose the LTS version (18.x)
+   - During installation, ensure "Add to PATH" is checked
+
+2. **Git**
+
+   - Download and install from [git-scm.com](https://git-scm.com/download/win)
+   - Choose 64-bit Git for Windows Setup
+   - Use default installation options
 
 3. **Docker Desktop**
 
-   - Enable WSL 2 (Windows Subsystem for Linux):
-     ```powershell
-     # Run in PowerShell as Administrator
-     wsl --install
-     ```
-   - Download and install Docker Desktop from [docker.com](https://www.docker.com/products/docker-desktop)
-   - During installation, ensure "Use WSL 2 instead of Hyper-V" is selected
-   - Restart your computer after installation
+   - Download and install from [docker.com](https://www.docker.com/products/docker-desktop)
+   - During installation:
+     - Enable WSL 2 features if prompted
+     - Add shortcut to desktop
+   - After installation:
+     - Start Docker Desktop
+     - Wait for the engine to start (check system tray icon)
 
 4. **Python Tools**
-
-   - Download and install Python 3.x from [python.org](https://www.python.org/downloads/)
+   - Download and install Python from [python.org](https://www.python.org/downloads/)
    - During installation:
      - Check "Add Python to PATH"
-     - Check "Install pip"
-
-   After Python installation:
-
+     - Choose "Customize installation"
+     - Enable "pip" in optional features
    ```cmd
-   # Install pipx
    python -m pip install --user pipx
    python -m pipx ensurepath
-
-   # Install Poetry
-   pipx install poetry
    ```
 
 ## Installation Steps
 
-1. Clone the repository:
+1. **Clone Repository**
 
-   ```bash
+   ```cmd
    git clone https://github.com/Oneirocom/Magick
    cd Magick
    ```
 
-2. Set up environment variables:
+2. **Install Dependencies**
 
-   ```bash
+   ```cmd
+   npm install
+   ```
+
+3. **Configure Environment**
+
+   ```cmd
    copy .env.example .env.local
    ```
 
-   You'll need to set up authentication with Clerk:
+   The default development URLs will be:
 
-   1. Create a free account at [dashboard.clerk.com](https://dashboard.clerk.com)
-   2. Create a new application:
-      ![Create Clerk Application](../images/create-application.png)
-      - Click "Add Application"
-      - Name your application (e.g. "Magick")
-      - Under "Sign-in methods", enable Email and Google
-      - Click "Create Application"
-   3. Get your API keys:
-      ![Update Environment Values](../images/update-application-env-values.png)
-      - From your Clerk dashboard, find your API keys under the "API Keys" section
-      - Copy both the "Publishable Key" and "Secret Key"
-   4. Add them to your `.env.local`:
-      ```
-      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_publishable_key
-      CLERK_SECRET_KEY=sk_test_your_secret_key
-      ```
+   - Portal Frontend: http://localhost:3000
+   - IDE/Agent Server: http://localhost:3030
 
-3. Install dependencies:
+4. **Start Infrastructure Services**
 
-   ```bash
-   npm install
-   poetry install --no-root
+   ```cmd
+   npm run portal:up
    ```
 
-4. Initialize the database services:
+   This starts PostgreSQL, Redis, and S3Mock containers.
 
-   ```bash
-   # Start required containers (PostgreSQL, Redis, S3mock)
-   npm run portal:up
+5. **Initialize Databases**
 
-   # Wait a few seconds for containers to be ready, then:
+   ```cmd
    npm run db:init        # Initialize main database
    npm run portal:db:init # Initialize portal database and seed templates
-   npm run bucket:init    # Initialize S3 buckets
    ```
 
-   Note: The `portal:db:init` command includes several steps:
+6. **Start Backend Server**
 
-   - Generating the database client
-   - Running migrations to create tables
-   - Seeding the database with initial templates (required for the template gallery)
-
-5. Start the development environment:
-
-   ```bash
-   # Start the portal in development mode
-   npm run dev:portal     # The portal will be available at http://localhost:4000
-   ```
-
-## Database Setup
-
-Magick uses PostgreSQL by default. If you're using the default configuration:
-
-1. Make sure Docker Desktop is running
-   - Check the Docker Desktop icon in the system tray
-   - Or open Docker Desktop from the Start menu
-2. The database will be automatically created on first run
-
-To use a custom database:
-
-1. Edit the `.env` file to update database connection settings
-2. Run migrations:
    ```cmd
-   cd apps/server
-   npm run migrate
+   npm run dev:server
    ```
 
-## Development Tools
+7. **Start Portal Frontend**
+   ```cmd
+   npm run portal:dev
+   ```
 
-### Chrome Self-Signed Certificates
+## Verification
 
-For local development with self-signed certificates:
+After starting all services, you should be able to access:
 
-1. Open Chrome
-2. Navigate to: `chrome://flags/#allow-insecure-localhost`
-3. Enable the flag
-
-### Webhooks Setup (Optional)
-
-For features requiring webhooks (e.g., GitHub integration):
-
-1. Create an [ngrok](https://ngrok.com/) account
-2. Add your ngrok auth token to the `.env` file
+- Portal Frontend: http://localhost:3000
+- IDE/Agent Server: http://localhost:3030
 
 ## Troubleshooting
 
-- If you encounter "command not found" errors:
-  - Ensure all prerequisites are installed
-  - Check that all tools are added to your system's PATH
-  - Try closing and reopening your terminal
-- For WSL 2 issues:
-  - Ensure virtualization is enabled in your BIOS
-  - Run `wsl --status` to check WSL installation
-  - Try `wsl --update` if you encounter issues
-- For database issues:
-  - Ensure Docker Desktop is running
-  - Check that port 5432 is available
-  - Check Docker Desktop logs for errors
-- For permission issues:
-  - Run terminal as Administrator
-  - Check Windows Defender or antivirus settings
-- Check the logs in `apps/server/logs` for detailed error messages
+If you encounter issues:
+
+1. Ensure all required services are running (check Docker Desktop dashboard)
+2. Verify environment variables in `.env.local`
+3. Check service logs for specific errors
+4. Refer to [Architecture Overview](../architecture.md) for service dependencies
+
+### Common Windows-Specific Issues
+
+1. **WSL 2 Issues**
+
+   - Open PowerShell as Administrator and run:
+
+   ```powershell
+   wsl --update
+   ```
+
+   - If WSL is not installed:
+
+   ```powershell
+   wsl --install
+   ```
+
+2. **Port Conflicts**
+
+   - Open PowerShell as Administrator and run:
+
+   ```powershell
+   netstat -ano | findstr :3000
+   netstat -ano | findstr :3030
+   ```
+
+3. **Docker Issues**
+
+   - Ensure Hyper-V is enabled (Windows Pro/Enterprise)
+   - For Windows Home, ensure WSL 2 is properly configured
+   - Restart Docker Desktop after installation
+
+4. **Python Path Issues**
+   - Verify Python is in PATH:
+   ```cmd
+   python --version
+   pip --version
+   ```
+   - If not found, add Python and pip to PATH manually through System Properties > Environment Variables
