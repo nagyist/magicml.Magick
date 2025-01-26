@@ -132,9 +132,15 @@ Before installing Magick, ensure you have the following prerequisites installed:
 
    # Wait a few seconds for containers to be ready, then:
    npm run db:init        # Initialize main database
-   npm run portal:db:init # Initialize portal database
+   npm run portal:db:init # Initialize portal database and seed templates
    npm run bucket:init    # Initialize S3 buckets
    ```
+
+   Note: The `portal:db:init` command includes several steps:
+
+   - Generating the database client
+   - Running migrations to create tables
+   - Seeding the database with initial templates (required for the template gallery)
 
 5. Start the development environment:
    ```bash
