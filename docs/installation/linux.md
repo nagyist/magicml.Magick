@@ -94,22 +94,25 @@ Magick uses [Clerk](https://clerk.com/) for authentication. You'll need to set u
    npm run portal:up
    ```
 
-   This starts PostgreSQL, Redis, and S3Mock containers.
+   This starts PostgreSQL, Redis, and S3Mock containers. Wait a few moments for the services to be ready.
 
-5. **Initialize Databases**
+5. **Initialize and Seed Databases**
 
    ```bash
    npm run db:init        # Initialize main database
    npm run portal:db:init # Initialize portal database and seed templates
    ```
 
-6. **Start Backend Server**
+6. **Start Services**
+
+   Start the backend server:
 
    ```bash
    npm run dev:server
    ```
 
-7. **Start Portal Frontend**
+   In a new terminal, start the portal frontend:
+
    ```bash
    npm run portal:dev
    ```
