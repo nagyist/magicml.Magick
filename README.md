@@ -15,8 +15,6 @@
   </a>
 </p>
 
-<h1 align = "center">WARNING!  This repository is undergoing a massive upgrade.  Our readme is outdated and our local deploy process is being migrated.  Check back soon for the new and improved Magick!</h1>
-
 <h3 align = "center">Magick is a groundbreaking visual AIDE (Artificial Intelligence Development Environment) for no-code data pipelines and multimodal agents. Magick can connect to other services and comes with nodes and templates well-suited for intelligent agents, chatbots, complex reasoning systems and realistic characters.</h3>
 
 ## 🗝 Key Features
@@ -30,7 +28,7 @@
 
 ## 🔮 Magick: Automate, Build, and Bring Your Ideas to Life with AI.
 
-With Magick, you can unleash the power of AI without needing to know how to code everytbing in a command line interface. Using our visual node based environment, you can connect to popular services and explore a world of pre-built nodes and connectors to bring your vision to life.
+With Magick, you can unleash the power of AI without needing to know how to code everything in a command line interface. Using our visual node based environment, you can connect to popular services and explore a world of pre-built nodes and connectors to bring your vision to life.
 
 <p align="center"><img src="apps/docs/readme-files/ui.png" /></p>
 
@@ -90,46 +88,33 @@ Triggers tell nodes to start asynchronous tasks. Some nodes can process data wit
 
 # ⚙️ Installation
 
-Please follow the installation guide for your operating system:
+Choose your operating system's installation guide for detailed setup instructions:
 
 - [macOS Installation Guide](docs/installation/macos.md)
 - [Linux Installation Guide](docs/installation/linux.md)
 - [Windows Installation Guide](docs/installation/windows.md)
 
+Each guide includes:
+
+- System requirements and prerequisites
+- Step-by-step installation instructions
+- Environment setup
+- Database configuration
+- Troubleshooting tips
+
 For detailed development documentation and architecture overview, see:
+
 - [Development Guide](docs/development/README.md)
 - [Architecture Overview](docs/architecture/README.md)
 
-## Database
+## Development Tips
 
-Magick installs postgres by default. If you want to use a different database, you can change the database connection in the [`.env` file](.env)
+### Self-signed certificates
 
-## Webhooks
+For local development, you may want to have Chrome accept self-signed certificates from localhost. To enable this:
 
-Some connectors (like Github) require webhooks. In development, Magick uses [ngrok](https://ngrok.com/) to create a tunnel to your local machine. You will need to create an account and add your auth token to the [`.env` file](.env)
-
-### Deploy your own Postgres database
-
-To deploy your own database, we suggest using Supabase or another Postgres database. The current setup for events and documents requires the [`pgvector`](https://supabase.com/docs/guides/database/extensions/pgvector) extension to be enabled.
-
-The following documents should help you with setup:
-
-- [Connecting to Postgres](https://supabase.com/docs/guides/database/connecting-to-postgres)
-- [OpenAI Embeddings- Postgres Vector](https://supabase.com/blog/openai-embeddings-postgres-vector)
-
-### Initialize a new database
-
-Magick uses [Feathers 5](https://feathersjs.com/) for backend, which in turn uses [Knex](https://knexjs.org/) for making database queries. We will offer a better database configuration experience in the future. For now, you will need to manually configure the database connection in the [`.env` file](.env) and then run the migration script.
-
-```cd apps/server
-npm run migrate
-```
-
-## Self signed certificates
-
-Developing locally, it can be very helpful to have google chrome accept all self signed cetificates coming from localhost. To do this, simply paste the following snippet into chromes URL bar and enable the feature:
-
-`chrome://flags/#allow-insecure-localhost`
+1. Navigate to: `chrome://flags/#allow-insecure-localhost`
+2. Enable the feature
 
 ## Contributors
 
