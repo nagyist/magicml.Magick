@@ -38,8 +38,6 @@ Key services that will be running:
    ```bash
    brew install python@3.11
    brew link python@3.11
-   brew install pipx
-   pipx ensurepath
    ```
 
 ## Clerk Authentication Setup

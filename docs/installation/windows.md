@@ -42,10 +42,6 @@ Key services that will be running:
      - Check "Add Python 3.11 to PATH"
      - Choose "Customize installation"
      - Enable "pip" in optional features
-   ```cmd
-   python -m pip install --user pipx
-   python -m pipx ensurepath
-   ```
 
 ## Clerk Authentication Setup
 
