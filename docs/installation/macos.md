@@ -46,6 +46,17 @@ Key services that will be running:
    pipx ensurepath
    ```
 
+## Clerk Authentication Setup
+
+Magick uses [Clerk](https://clerk.com/) for authentication. You'll need to set up a Clerk account and application before proceeding:
+
+1. Sign up for a free account at [clerk.com](https://clerk.com)
+2. Create a new application
+   ![Create Clerk Application](../images/create-application.png)
+3. Once created, copy the required environment variables
+   ![Update Environment Values](../images/update-application-env-values.png)
+4. Add these values to your `.env.local` file in the next section
+
 ## Installation Steps
 
 1. **Clone Repository**
