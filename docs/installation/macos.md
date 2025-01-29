@@ -34,6 +34,8 @@ Key services that will be running:
 
    Start Docker Desktop from Applications folder
 
+   > **Note for M1/M2 Mac Users**: You may see platform mismatch warnings for the database containers (e.g., "platform linux/amd64 does not match host platform linux/arm64/v8"). These warnings are expected and the containers should still work correctly. If you experience issues, you can enable "Use Rosetta for x86/amd64 emulation on Apple Silicon" in Docker Desktop settings.
+
 4. **Python 3.11**
    ```bash
    brew install python@3.11
