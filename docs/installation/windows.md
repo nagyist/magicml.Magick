@@ -36,10 +36,10 @@ Key services that will be running:
      - Start Docker Desktop
      - Wait for the engine to start (check system tray icon)
 
-4. **Python Tools**
-   - Download and install Python from [python.org](https://www.python.org/downloads/)
+4. **Python 3.11**
+   - Download and install Python 3.11 from [python.org](https://www.python.org/downloads/release/python-3115/)
    - During installation:
-     - Check "Add Python to PATH"
+     - Check "Add Python 3.11 to PATH"
      - Choose "Customize installation"
      - Enable "pip" in optional features
    ```cmd
@@ -70,7 +70,7 @@ Magick uses [Clerk](https://clerk.com/) for authentication. You'll need to set u
 2. **Install Dependencies**
 
    ```cmd
-   npm install
+   npm install --python=python3.11
    ```
 
 3. **Configure Environment**

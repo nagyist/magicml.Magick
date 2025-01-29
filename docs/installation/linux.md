@@ -41,8 +41,13 @@ Key services that will be running:
    sudo apt-get install git
    ```
 
-4. **Python Tools**
+4. **Python 3.11**
    ```bash
+   # Add deadsnakes PPA for Python 3.11
+   sudo add-apt-repository ppa:deadsnakes/ppa
+   sudo apt-get update
+   sudo apt-get install python3.11 python3.11-venv python3.11-dev
+   sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
    sudo apt-get install python3-pip
    python3 -m pip install --user pipx
    python3 -m pipx ensurepath
@@ -71,7 +76,7 @@ Magick uses [Clerk](https://clerk.com/) for authentication. You'll need to set u
 2. **Install Dependencies**
 
    ```bash
-   npm install
+   npm install --python=python3.11
    ```
 
 3. **Configure Environment**

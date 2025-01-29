@@ -20,19 +20,13 @@ Key services that will be running:
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-2. **Git**
-
-   ```bash
-   brew install git
-   ```
-
-3. **Node.js 18+**
+2. **Node.js 18+**
 
    ```bash
    brew install node@18
    ```
 
-4. **Docker Desktop**
+3. **Docker Desktop**
 
    ```bash
    brew install --cask docker
@@ -40,8 +34,10 @@ Key services that will be running:
 
    Start Docker Desktop from Applications folder
 
-5. **Python Tools**
+4. **Python 3.11**
    ```bash
+   brew install python@3.11
+   brew link python@3.11
    brew install pipx
    pipx ensurepath
    ```
@@ -69,7 +65,7 @@ Magick uses [Clerk](https://clerk.com/) for authentication. You'll need to set u
 2. **Install Dependencies**
 
    ```bash
-   npm install
+   npm install --python=python3.11
    ```
 
 3. **Configure Environment**
