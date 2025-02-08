@@ -14,19 +14,39 @@ Key services that will be running:
 
 ## Prerequisites
 
-1. **Node.js 18+**
+1. **Node Version Manager (nvm-windows)**
 
-   - Download and install from [nodejs.org](https://nodejs.org/)
+   - Download and install nvm-windows from [github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
+   - Choose the latest `nvm-setup.exe` release
+   - Run the installer with default settings
+   - Open a new Command Prompt or PowerShell and verify installation:
+     ```cmd
+     nvm version
+     ```
+   - Install and use Node.js 18.18:
+     ```cmd
+     nvm install 18.18
+     nvm use 18.18
+     ```
+
+2. **Node.js 18+**
+
+   - With nvm-windows installed, Node.js 18.18 should now be active
+   - Verify installation:
+     ```cmd
+     node --version
+     ```
+   - If not using nvm, you can alternatively download and install directly from [nodejs.org](https://nodejs.org/)
    - Choose the LTS version (18.x)
    - During installation, ensure "Add to PATH" is checked
 
-2. **Git**
+3. **Git**
 
    - Download and install from [git-scm.com](https://git-scm.com/download/win)
    - Choose 64-bit Git for Windows Setup
    - Use default installation options
 
-3. **Docker Desktop**
+4. **Docker Desktop**
 
    - Download and install from [docker.com](https://www.docker.com/products/docker-desktop)
    - During installation:
@@ -36,7 +56,7 @@ Key services that will be running:
      - Start Docker Desktop
      - Wait for the engine to start (check system tray icon)
 
-4. **Python 3.11**
+5. **Python 3.11**
    - Download and install Python 3.11 from [python.org](https://www.python.org/downloads/release/python-3115/)
    - During installation:
      - Check "Add Python 3.11 to PATH"
