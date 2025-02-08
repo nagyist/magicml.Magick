@@ -57,9 +57,10 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     })
 
+    // Adjust 'include' for cross-platform compatibility, using [\\/] for backslashes on Windows
     config.module.rules.push({
       test: /\.js$/,
-      include: /node_modules\/@magickml\/behave-graph/,
+      include: /node_modules[\\/]@magickml[\\/]behave-graph/,
       type: 'javascript/auto',
       use: {
         loader: 'babel-loader',
