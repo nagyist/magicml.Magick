@@ -177,9 +177,20 @@ If you encounter issues:
    - Restart Docker Desktop after installation
 
 4. **Python Path Issues**
+
    - Verify Python is in PATH:
+
    ```cmd
    python --version
    pip --version
    ```
+
    - If not found, add Python and pip to PATH manually through System Properties > Environment Variables
+
+5. **NX Workspace Reset Failures**
+   - If you encounter errors during post-install steps when NX tries to reset the workspace, this may be caused by active portal or dev server processes
+   - Close any running portal or dev server processes before retrying
+   - You can find and close these processes using Task Manager, or via PowerShell:
+     ```powershell
+     Get-Process -Name "node" | Where-Object {$_.MainWindowTitle -like "*portal*" -or $_.MainWindowTitle -like "*dev*"} | Stop-Process
+     ```
