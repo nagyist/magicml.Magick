@@ -188,9 +188,20 @@ If you encounter issues:
    - If not found, add Python and pip to PATH manually through System Properties > Environment Variables
 
 5. **NX Workspace Reset Failures**
+
    - If you encounter errors during post-install steps when NX tries to reset the workspace, this may be caused by active portal or dev server processes
    - Close any running portal or dev server processes before retrying
    - You can find and close these processes using Task Manager, or via PowerShell:
      ```powershell
      Get-Process -Name "node" | Where-Object {$_.MainWindowTitle -like "*portal*" -or $_.MainWindowTitle -like "*dev*"} | Stop-Process
      ```
+
+6. **Node-gyp Build Errors**
+   - If you encounter node-gyp errors during `npm install`, you may need to install the Visual C++ Build Environment
+   - For Visual Studio 2019 or later:
+     - Install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
+     - During installation, select "Desktop development with C++" workload
+   - For older versions:
+     - Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+     - Select the "Visual C++ build tools" option
+   - After installation, retry `npm install`
