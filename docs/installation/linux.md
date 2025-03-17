@@ -105,16 +105,12 @@ Magick uses [Clerk](https://clerk.com/) for authentication. You'll need to set u
 
 6. **Start Services**
 
-   Start the backend server:
+   Start the required services in separate terminal windows:
 
    ```bash
-   npm run dev:server
-   ```
-
-   In a new terminal, start the portal frontend:
-
-   ```bash
-   npm run portal:dev
+   npm run dev-base      # Start the base services
+   npm run dev:connector # Start the connector service
+   npm run dev:portal    # Start the portal frontend
    ```
 
 ## Verification
