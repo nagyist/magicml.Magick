@@ -2,14 +2,12 @@ import pino, { type LoggerOptions } from 'pino'
 import pretty from 'pino-pretty'
 import { config } from 'dotenv-flow'
 import { getPinoTransport } from '@hyperdx/node-opentelemetry'
+import { PINO_LOG_LEVEL, NODE_ENV } from '@magickml/server-config'
 
 // Load environment variables
 config({
   path: '../../../.env.*',
 })
-
-const PINO_LOG_LEVEL = process.env['PINO_LOG_LEVEL'] || 'info'
-const NODE_ENV = process.env['NODE_ENV'] || 'development'
 
 let logger: pino.Logger | null = null
 

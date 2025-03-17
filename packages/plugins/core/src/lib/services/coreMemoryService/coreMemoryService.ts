@@ -95,6 +95,8 @@ class CoreMemoryService implements ICoreMemoryService {
     )?.value
 
     if (!credential && serviceType && (!PRODUCTION || this.useEnv)) {
+      // We need to use process.env directly here because serviceType is a dynamic key
+      // This allows us to look up credentials by their name in the environment variables
       credential = process.env[serviceType]
     }
 

@@ -1,3 +1,5 @@
+import { KEYWORDS_API_URL, KEYWORDS_API_KEY } from '@magickml/server-config'
+
 type ProxyUser = {
   id: string
   name: string
@@ -37,8 +39,8 @@ export class KeywordsService {
   private readonly apiKey: string
 
   constructor() {
-    this.apiUrl = process.env['KEYWORDS_API_URL'] || ''
-    this.apiKey = process.env['KEYWORDS_API_KEY'] || ''
+    this.apiUrl = KEYWORDS_API_URL || ''
+    this.apiKey = KEYWORDS_API_KEY || ''
   }
 
   private getHeaders(): HeadersInit {
