@@ -26,7 +26,7 @@
     "build": "npx nx run-many --target=build --projects=@magickml/server,@magickml/cloud-agent-worker-app,@magickml/cloud-agent-manager-app,portal",
     "cloud-nocache": "npm run dev-base -- --skip-nx-cache",
     "cloud": "npm run dev-base",
-    "common-setup": "NX_NON_NATIVE_HASHER=true node scripts/check-install.js",
+    "common-setup": "cross-env NX_NON_NATIVE_HASHER=true node scripts/check-install.js",
     "db:deploy": "npx prisma migrate deploy --schema packages/server/db/src/lib/prisma/schema.prisma",
     "db:dev": "npx prisma migrate dev --schema packages/server/db/src/lib/prisma/schema.prisma",
     "db:generate": "npx nx run server/db:generate",
