@@ -47,8 +47,10 @@ export class CoreLLMService implements ICoreLLMService {
   async initialize() {
     try {
       this.logger = getLogger()
-      const userData = await this.userService?.getUser()
-      this.userData = userData
+      if (ENABLE_USER_SERVICE) {
+        const userData = await this.userService?.getUser()
+        this.userData = userData
+      }
     } catch (error: any) {
       console.error('Error initializing CoreLLMService:', error)
       throw error
