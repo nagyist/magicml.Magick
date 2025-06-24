@@ -164,33 +164,110 @@ const NewMenuBar = (props: any) => {
       const zip = new JSZip()
       const contents = await zip.loadAsync(file)
 
+      // First pass: Extract all spells and build a map of original IDs to new IDs
+      const idMapping: Record<string, string> = {}
+      const spellDataMap: Record<string, any> = {}
+      const spellNameToIdMap: Record<string, string> = {}
+
       for (const filename of Object.keys(contents.files)) {
-        if (!contents.files[filename].dir) {
+        if (!contents.files[filename].dir && filename.endsWith('.spell.json')) {
           const content = await contents.files[filename].async('string')
           const spellData = JSON.parse(content)
 
-          console.log('Importing:', spellData)
-
-          // Create new spell
-          const response = await newSpell({
-            id: v4(),
-            graph: spellData.graph,
-            name: `${spellData.name}`,
-            projectId: config.projectId,
-            type: spellData.type,
-          })
-
-          if ('error' in response) {
-            throw new Error(
-              `Failed to import spell ${spellData.name}: ${response.error}`
-            )
+          if (!spellData.id || !spellData.name) {
+            console.warn(`Skipping spell with missing id or name: ${filename}`)
+            continue
           }
 
-          posthog.capture('spell_imported', {
-            projectId: config.projectId,
-            spellName: spellData.name,
-          })
+          // Generate a new ID for this spell
+          const newId = v4()
+
+          // Store the mapping from old ID to new ID
+          idMapping[spellData.id] = newId
+
+          // Also store a mapping from spell name to new ID
+          spellNameToIdMap[spellData.name] = newId
+
+          // Store the spell data for the second pass
+          spellDataMap[spellData.id] = {
+            ...spellData,
+            originalId: spellData.id,
+          }
+
+          console.log(
+            `Mapped spell: ${spellData.name} (${spellData.id} → ${newId})`
+          )
         }
+      }
+
+      // Second pass: Update all references and import spells
+      const importedSpells = []
+
+      for (const originalId in spellDataMap) {
+        const spellData = spellDataMap[originalId]
+        const newId = idMapping[originalId]
+
+        // Deep clone the graph to avoid modifying the original
+        const updatedGraph = JSON.parse(JSON.stringify(spellData.graph))
+
+        // Update all subspell references in the graph
+        if (updatedGraph && updatedGraph.nodes) {
+          for (const node of updatedGraph.nodes) {
+            if (node.type === 'action/subspell/run' && node.configuration) {
+              // Handle reference by ID
+              if (
+                node.configuration.spellId &&
+                idMapping[node.configuration.spellId]
+              ) {
+                node.configuration.spellId =
+                  idMapping[node.configuration.spellId]
+                console.log(
+                  `Updated ID reference in ${spellData.name}: ${node.configuration.spellId}`
+                )
+              }
+              // Handle reference by name
+              else if (
+                node.configuration.spellName &&
+                spellNameToIdMap[node.configuration.spellName]
+              ) {
+                // If spell was referenced by name, update the ID based on the name
+                node.configuration.spellId =
+                  spellNameToIdMap[node.configuration.spellName]
+                console.log(
+                  `Updated name-based reference in ${spellData.name}: ${node.configuration.spellName} → ${node.configuration.spellId}`
+                )
+              }
+            }
+          }
+        }
+
+        // Create new spell with updated references
+        const response = await newSpell({
+          id: newId,
+          graph: updatedGraph,
+          name: spellData.name,
+          projectId: config.projectId,
+          type: spellData.type || 'standard',
+        })
+
+        if ('error' in response) {
+          throw new Error(
+            `Failed to import spell ${spellData.name}: ${response.error}`
+          )
+        }
+
+        importedSpells.push({
+          name: spellData.name,
+          id: newId,
+          originalId: originalId,
+        })
+
+        console.log(`Imported spell ${spellData.name} with new ID ${newId}`)
+
+        posthog.capture('spell_imported', {
+          projectId: config.projectId,
+          spellName: spellData.name,
+        })
       }
 
       enqueueSnackbar('Agent imported successfully', { variant: 'success' })

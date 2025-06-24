@@ -21,9 +21,6 @@ RUN git clone --branch ${BRANCH} --depth 1 https://www.github.com/oneirocom/magi
 
 WORKDIR /app
 
-# Clone the submodule
-RUN git submodule update --init --recursive portal/cloud
-
 # Install dependencies
 RUN npm install --foreground-scripts
 

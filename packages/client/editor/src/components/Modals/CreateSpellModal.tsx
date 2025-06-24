@@ -51,7 +51,7 @@ const CreateSpellModal = () => {
 
     // Create new spell
     const response = (await newSpell({
-      id: uuidv4(),
+      id: spellData.id || uuidv4(),
       graph: spellData.graph,
       name: `${spellData.name}-copy`,
       projectId: config.projectId,
@@ -77,7 +77,7 @@ const CreateSpellModal = () => {
       const name = data.name || placeholderName
       setLoading(true)
       const response = (await newSpell({
-        id: uuidv4(),
+        id: data.id || uuidv4(),
         graph: behaveGraph,
         name,
         type: 'behave',

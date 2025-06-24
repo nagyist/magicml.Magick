@@ -1,7 +1,7 @@
 import { CoreEventsPlugin } from '@magickml/agent-plugin'
 import { RedisPubSub } from '@magickml/redis-pubsub'
 import { SpellCaster } from '@magickml/agent-service'
-import { DATABASE_URL } from '@magickml/server-config'
+import { DATABASE_URL, ENABLE_USER_SERVICE } from '@magickml/server-config'
 
 import { CoreLLMService } from './services/coreLLMService/coreLLMService'
 import { messageEvent } from './nodes/events/messageEvent'
@@ -189,7 +189,7 @@ export class CorePlugin extends CoreEventsPlugin<
       agent,
     })
 
-    if (process.env['ENABLE_USER_SERVICE']) {
+    if (ENABLE_USER_SERVICE) {
       this.userService = new CoreUserService({ projectId })
     }
   }

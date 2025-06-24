@@ -14,7 +14,12 @@ import { AgentInterface } from '@magickml/agent-server-schemas'
 import { RedisPubSub } from '@magickml/redis-pubsub'
 import { PluginManager } from '@magickml/agent-plugin-manager'
 import { CommandHub } from '@magickml/agent-command-hub'
-import { AGENT_HEARTBEAT_INTERVAL_MSEC } from '@magickml/server-config'
+import {
+  AGENT_HEARTBEAT_INTERVAL_MSEC,
+  OPENAI_API_KEY,
+  ANTHROPIC_API_KEY,
+  PLUGIN_DIRECTORY,
+} from '@magickml/server-config'
 import {
   ActionPayload,
   EventPayload,
@@ -111,9 +116,11 @@ export class AgentV2
 
     this.seraphManager = new SeraphManager({
       seraphOptions: {
-        openAIApiKey: process.env.OPENAI_API_KEY || '',
-        anthropicApiKey: process.env.ANTHROPIC_API_KEY || '',
-      },
+        openAIApiKey: OPENAI_API_KEY,
+        anthropicApiKey: ANTHROPIC_API_KEY,
+        prompt:
+          'You are seraph, an AI angel. You provide information about the world.',
+      } as any, // Use type assertion to bypass the type check temporarily
       agentId: this.id,
       projectId: this.projectId,
       pubSub: this.pubsub,
@@ -122,7 +129,7 @@ export class AgentV2
     })
 
     this.pluginManager = new PluginManager({
-      pluginDirectory: process.env.PLUGIN_DIRECTORY || './plugins',
+      pluginDirectory: PLUGIN_DIRECTORY || './plugins',
       connection: this.app.get('redis'),
       agent: this,
       pubSub: this.app.get('pubsub'),

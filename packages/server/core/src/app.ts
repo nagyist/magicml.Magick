@@ -24,6 +24,13 @@ import {
   PAGINATE_MAX,
   PAGINATE_DEFAULT,
   DATABASE_URL,
+  ENABLE_SERAPH,
+  OPENAI_API_KEY,
+  ANTHROPIC_API_KEY,
+  POSTHOG_API_KEY,
+  SERVER_PORT,
+  SERVER_HOST,
+  JWT_SECRET,
 } from '@magickml/server-config'
 import { createPosthogClient } from '@magickml/server-event-tracker'
 import { getLogger } from '@magickml/server-logger'
@@ -77,13 +84,13 @@ export async function initApp(environment: Environment = 'default') {
   const credentialsManager = new CredentialsManager()
   app.set('credentialsManager', credentialsManager)
 
-  if (process.env['ENABLE_SERAPH'] === 'true') {
+  if (ENABLE_SERAPH) {
     logger.info('INITIALIZING SERAPH')
     const prompt = 'You are seraph, a helpful AI angel.'
     const seraph = new SeraphCore({
       prompt,
-      openAIApiKey: process.env['OPENAI_API_KEY'] as string,
-      anthropicApiKey: process.env['ANTHROPIC_API_KEY'] as string,
+      openAIApiKey: OPENAI_API_KEY as string,
+      anthropicApiKey: ANTHROPIC_API_KEY as string,
     })
     app.set('seraphCore', seraph)
   }
@@ -92,15 +99,15 @@ export async function initApp(environment: Environment = 'default') {
   // seraph.registerCognitiveFunction(new MemoryStorage(seraph))
   // seraph.registerCognitiveFunction(new MemoryRetrieval(seraph))
 
-  if (process.env['POSTHOG_API_KEY']) {
+  if (POSTHOG_API_KEY) {
     logger.info('INITIALIZING POSTHOG')
     app.set('posthog', createPosthogClient(app))
   }
 
-  const port = parseInt(process.env.PORT || '3030', 10)
+  const port = parseInt(SERVER_PORT || '3030', 10)
   app.set('port', port)
 
-  const host = process.env.HOST || 'localhost'
+  const host = SERVER_HOST || 'localhost'
   app.set('host', host)
 
   const paginateDefault = parseInt(PAGINATE_DEFAULT || '10', 10)
@@ -153,7 +160,7 @@ export async function initApp(environment: Environment = 'default') {
 
   // Configure authentication
   app.set('authentication', {
-    secret: process.env.JWT_SECRET || 'secret',
+    secret: JWT_SECRET,
     entity: null,
     authStrategies: ['jwt'],
     jwtOptions: {

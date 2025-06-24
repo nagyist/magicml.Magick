@@ -11,6 +11,12 @@ import pino from 'pino'
 import { streamText } from 'ai'
 import { createOpenAI } from '@magickml/vercel-sdk-core'
 import { clerkClient } from '@clerk/clerk-sdk-node'
+import {
+  ENABLE_USER_SERVICE,
+  KEYWORDS_API_KEY,
+  KEYWORDS_API_URL,
+  NODE_ENV,
+} from '@magickml/server-config'
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -33,7 +39,7 @@ export class CoreLLMService implements ICoreLLMService {
     this.agent = agent
     this.projectId = projectId
     this.agentId = agentId || ''
-    if (process.env['ENABLE_USER_SERVICE'] === 'true') {
+    if (ENABLE_USER_SERVICE) {
       this.userService = new CoreUserService({ projectId })
     }
   }
@@ -41,8 +47,10 @@ export class CoreLLMService implements ICoreLLMService {
   async initialize() {
     try {
       this.logger = getLogger()
-      const userData = await this.userService?.getUser()
-      this.userData = userData
+      if (ENABLE_USER_SERVICE) {
+        const userData = await this.userService?.getUser()
+        this.userData = userData
+      }
     } catch (error: any) {
       console.error('Error initializing CoreLLMService:', error)
       throw error
@@ -68,7 +76,7 @@ export class CoreLLMService implements ICoreLLMService {
     let useWallet = this.userData?.user.useWallet
     const mpUser = this.userData?.user.mpUser
     const walletUser = this.userData?.user.walletUser
-    const USER_SERVICE_ENABLED = process.env['ENABLE_USER_SERVICE'] === 'true'
+    const USER_SERVICE_ENABLED = ENABLE_USER_SERVICE
 
     while (attempts < actualMaxRetries) {
       try {
@@ -108,8 +116,8 @@ export class CoreLLMService implements ICoreLLMService {
           : {}
 
         const openai = createOpenAI({
-          baseURL: process.env['KEYWORDS_API_URL'],
-          apiKey: process.env['KEYWORDS_API_KEY'],
+          baseURL: KEYWORDS_API_URL,
+          apiKey: KEYWORDS_API_KEY,
           ...extraMetaData,
         })
 
@@ -222,7 +230,7 @@ export class CoreLLMService implements ICoreLLMService {
     }
     let credential
 
-    if (process.env.NODE_ENV === 'development') {
+    if (NODE_ENV === 'development') {
       credential = null
     }
 

@@ -17,6 +17,10 @@ import { CommandHub } from '@magickml/agent-command-hub'
 import {
   AGENT_HEARTBEAT_INTERVAL_MSEC,
   POSTHOG_ENABLED,
+  ENABLE_SERAPH,
+  OPENAI_API_KEY,
+  ANTHROPIC_API_KEY,
+  PLUGIN_DIRECTORY,
 } from '@magickml/server-config'
 import {
   ActionPayload,
@@ -181,12 +185,14 @@ export class Agent
 
     this.commandHub = new CommandHub<this>(this, this.pubsub)
 
-    if (process.env['ENABLE_SERAPH'] === 'true') {
+    if (ENABLE_SERAPH) {
       this.seraphManager = new SeraphManager({
         seraphOptions: {
-          openAIApiKey: process.env.OPENAI_API_KEY || '',
-          anthropicApiKey: process.env.ANTHROPIC_API_KEY || '',
-        },
+          openAIApiKey: OPENAI_API_KEY,
+          anthropicApiKey: ANTHROPIC_API_KEY,
+          prompt:
+            'You are seraph, an AI angel. You provide information about the world.',
+        } as any,
         agentId: this.id,
         projectId: this.projectId,
         pubSub: this.pubsub,
@@ -196,7 +202,7 @@ export class Agent
     }
 
     this.pluginManager = new PluginManager<this>({
-      pluginDirectory: process.env.PLUGIN_DIRECTORY ?? './plugins',
+      pluginDirectory: PLUGIN_DIRECTORY || './plugins',
       connection: this.app.get('redis'),
       agent: this,
       pubSub: this.app.get('pubsub'),

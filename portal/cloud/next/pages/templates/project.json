@@ -1,0 +1,33 @@
+{
+  "name": "pages-templates",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "portal/cloud/next/pages/templates/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/portal/cloud/next/pages/templates",
+        "tsConfig": "portal/cloud/next/pages/templates/tsconfig.lib.json",
+        "project": "portal/cloud/next/pages/templates/package.json",
+        "entryFile": "portal/cloud/next/pages/templates/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "swc",
+        "assets": [
+          {
+            "glob": "portal/cloud/next/pages/templates/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}
